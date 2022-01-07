@@ -1,0 +1,48 @@
+.con-home{
+    height: 100vh;
+    width: 100vw;
+}
+
+.nav-bar-home{
+    height: 9%;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+
+.menu-left-home, .wrapper-balance-home, .balance-box-home, .wrapper-content-lower-home, .content-menu-home, .trans-history-home{
+    border-radius: 1.5rem;
+}
+
+.bg-primary-zwallet, .balance-box-home{
+    background-color: #6379F4;
+}
+
+.footer-home{
+    height: 10%;
+    background-color: #6379F4;
+}
+
+.change-home{
+    border-left: solid 3px transparent;
+    transition: .5s;
+}
+
+.change-home:hover{
+    border-left: solid 3px #6474af;
+    cursor: pointer;
+    color: #6379F4;
+}
+
+a{
+    text-decoration: none;
+}
+
+.btn-outline-home{
+    color: white;
+    border-color: white;
+}
+
+.link{
+    cursor: pointer;
+    color: #6379F4;
+}

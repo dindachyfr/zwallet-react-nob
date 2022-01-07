@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './pages/Home/Home';
+import Login from "./pages/Login/Login";
+import SignUp from "./pages/SignUp/SignUp";
+import History from './pages/History/History'
+import RequireAuth from './components/base/RequireAuth/RequireAuth';
+import TransferBlank from './pages/Transfer/Transfer1';
+import Transfer2 from './pages/Transfer/TransferBlank';
+import TransferConfirm from './pages/TransferConfirm/TransferConfirm';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+    <Routes>
+    <Route path="/" element={
+    <RequireAuth>
+      <Home/> 
+    </RequireAuth>
+}/>
+      <Route path="login" element={<Login/>}/>
+      <Route path="register" element={<SignUp/>}/>
+      <Route path="history" element={<History/>}/>
+      <Route path="transfer" element={<TransferBlank/>}/>
+      <Route path="transfer/:id" element={<Transfer2/>}/>
+      <Route path="transfer/confirmation" element={<TransferConfirm/>}/>
+    </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App

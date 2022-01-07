@@ -1,0 +1,23 @@
+.trans-history-contactwallet{
+    overflow: auto;
+    border-radius: 1.5rem;
+}
+
+.search-input {
+    background: transparent;
+    border: 0;
+    margin-left: 10px;
+}
+
+.search-icon {
+    margin-left: 5px;
+}
+
+.history-input{
+    border-radius: 1.5rem;
+}
+
+.recipient{
+    cursor: pointer;
+    border-radius: .5rem;
+}
