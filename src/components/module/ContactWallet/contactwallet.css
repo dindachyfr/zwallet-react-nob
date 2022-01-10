@@ -7,17 +7,26 @@
     background: transparent;
     border: 0;
     margin-left: 10px;
+    outline: none;
 }
 
 .search-icon {
     margin-left: 5px;
 }
 
-.history-input{
+.history-input {
     border-radius: 1.5rem;
+    height: 4rem;
 }
 
-.recipient{
+.recipient {
     cursor: pointer;
     border-radius: .5rem;
+    height: 6rem;
+}
+
+.text-secondary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

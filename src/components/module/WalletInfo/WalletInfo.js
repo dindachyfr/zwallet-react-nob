@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Button from '../../base/Button'
 import '../../../pages/Home/home.css'
 import Transfer from './transfer-icon.png'
 import TopUp from './transfer-icon.png'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+// import { walletContext } from '../../../Context/WalletContext'
 
 const WalletInfo = () => {
     const user = JSON.parse(localStorage.getItem('user'))
@@ -30,7 +31,11 @@ const WalletInfo = () => {
             console.log(err.response);
         })
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     })
+
+    // const {wallet, setWallet} = useContext(walletContext)
+
 
     return (
         <section className="balance-box-home shadow-sm h-25">

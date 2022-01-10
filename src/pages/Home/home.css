@@ -46,3 +46,7 @@ a{
     cursor: pointer;
     color: #6379F4;
 }
+
+.box-right-wrapper {
+    height: 80%;
+}

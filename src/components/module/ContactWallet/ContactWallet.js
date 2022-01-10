@@ -4,37 +4,68 @@ import './contactwallet.css'
 import Search from './search-icon.svg'
 import UserImage from '../../../components/module/Navbar/NangIs-icon.svg'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 
 const ContactWallet = () => {
-
+    const [searchParams, setSearchParams] = useSearchParams();
+    const querySearch = searchParams.get("search");
     const [users, setUsers] = useState([]);
     const navigate = useNavigate()
 
-    useEffect(()=>{
-        axios.get('https://zwallet-dinda.herokuapp.com/users?limit=4')
-        .then((res)=>{
-            const result = res.data.data
-            setUsers(result)
-        }).catch((err)=>{
-            console.log(err.response);
-        })
-    }, [])
+    // useEffect(()=>{
+    //     axios.get('https://zwallet-dinda.herokuapp.com/users?limit=4')
+    //     .then((res)=>{
+    //         const result = res.data.data
+    //         setUsers(result)
+    //     }).catch((err)=>{
+    //         console.log(err.response);
+    //     })
+    // }, [])
 
-    const handleSearch = (e) =>{
-        axios
-          .get(
-            `https://zwallet-dinda.herokuapp.com/users?filter=${e.target.value}&limit=4`)
-          .then((res) => {
-            const result = res.data.data;
-            setUsers(result);
-          })
-          .catch((err) => {
-            console.log(err.response);
-          });
-    }
+    useEffect(() => {
+        if (querySearch) {
+          axios
+            .get(`https://zwallet-dinda.herokuapp.com/users?filter=${querySearch}&limit=4`)
+            .then((res) => {
+              const result = res.data.data;
+            setUsers(result)
+})
+            .catch((err) => {
+              console.log(err.response);
+            });
+        } else {
+          axios
+            .get("https://zwallet-dinda.herokuapp.com/users?limit=4")
+            .then((res) => {
+              const result = res.data.data;
+              setUsers(result)
+            })
+            .catch((err) => {
+              console.log(err.response);
+            });
+        }
+      }, [querySearch]);
     
+    // const handleSearch = (e) =>{
+    //     axios
+    //       .get(
+    //         `https://zwallet-dinda.herokuapp.com/users?filter=${e.target.value}&limit=4`)
+    //       .then((res) => {
+    //         const result = res.data.data;
+    //         setUsers(result);
+    //       })
+    //       .catch((err) => {
+    //         console.log(err.response);
+    //       });
+    // }
+
+    const handleSearch = (e) => {
+        if (e.key === "Enter") {
+          setSearchParams({ search: e.target.value });
+        }
+      }
+        
     return (
         <section className="trans-history-contactwallet w-lg-75 w-100 d-flex flex-column bg-white shadow-sm p-lg-3 flex-grow-3">               
                 <div className="history-upper d-flex flex-column px-5 py-lg-0 py-3">  

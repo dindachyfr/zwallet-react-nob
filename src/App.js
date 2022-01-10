@@ -20,10 +20,26 @@ const App = () => {
 }/>
       <Route path="login" element={<Login/>}/>
       <Route path="register" element={<SignUp/>}/>
-      <Route path="history" element={<History/>}/>
-      <Route path="transfer" element={<TransferBlank/>}/>
-      <Route path="transfer/:id" element={<Transfer2/>}/>
-      <Route path="transfer/confirmation" element={<TransferConfirm/>}/>
+      <Route path="history" element={
+      <RequireAuth>
+        <History/>
+      </RequireAuth>
+}/>
+      <Route path="transfer" element={
+      <RequireAuth>
+        <TransferBlank/>      
+      </RequireAuth>
+}/>
+      <Route path="transfer/:id" element={
+      <RequireAuth>
+        <Transfer2/>      
+      </RequireAuth>
+}/>
+      <Route path="transfer/confirmation" element={
+      <RequireAuth>
+        <TransferConfirm/>
+      </RequireAuth>
+}/>
     </Routes>
     </BrowserRouter>
   )

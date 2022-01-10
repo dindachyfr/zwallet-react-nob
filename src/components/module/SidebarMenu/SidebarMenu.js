@@ -11,9 +11,8 @@ const SidebarMenu = () => {
     const navigate = useNavigate()
     
     const handleLogout = ()=>{
-        localStorage.removeItem('auth')
-        localStorage.removeItem('user')
-        localStorage.removeItem('wallet')
+        localStorage.clear()
+
         navigate('/login')
     }
 

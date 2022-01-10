@@ -72,7 +72,7 @@ const RightBox = () => {
     }
         return (
         <section className="box box-right p-5">
-        <main className="h-lg-75 h-50 d-flex flex-column justify-content-between mx-auto">
+        <main className="box-right-wrapper d-flex flex-column justify-content-between mx-auto">
             <h2 className="text-center w-100 text-secondary d-block d-lg-none">Sign Up</h2>
             <h2 className="text-secondary w-100 d-none d-lg-block">Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</h2>
             <p className="text-secondary w-100 text-center d-block d-lg-none">Create your own account.</p>
