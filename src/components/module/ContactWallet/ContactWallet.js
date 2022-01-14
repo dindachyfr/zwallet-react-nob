@@ -27,6 +27,8 @@ const ContactWallet = () => {
         if (querySearch) {
           axios
             .get(`https://zwallet-dinda.herokuapp.com/users?filter=${querySearch}&limit=4`)
+            // .get(`http://localhost:5000/users?filter=${querySearch}&limit=4`)
+
             .then((res) => {
               const result = res.data.data;
             setUsers(result)
@@ -36,8 +38,9 @@ const ContactWallet = () => {
             });
         } else {
           axios
-            .get("https://zwallet-dinda.herokuapp.com/users?limit=4")
-            .then((res) => {
+          .get("https://zwallet-dinda.herokuapp.com/users?limit=4")
+        //   .get("http://localhost:5000/users?limit=4")
+          .then((res) => {
               const result = res.data.data;
               setUsers(result)
             })
