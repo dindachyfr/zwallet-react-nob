@@ -1,0 +1,9 @@
+.input-notes{
+    margin-top: 16vh;
+    width: 26vw;
+}
+
+input.bg-transparent.ms-3.border-0.text-secondary {
+    width: 25vw;
+    outline: none;
+}
