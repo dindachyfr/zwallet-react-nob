@@ -1,0 +1,12 @@
+.pincode-input-container {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 4rem!important;
+}
+
+input.pincode-input-text {
+    height: 4rem!important;
+    border-radius: 1rem;
+    border: 1px solid #aaa5a5!important;
+}
