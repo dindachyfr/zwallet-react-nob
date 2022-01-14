@@ -1,0 +1,38 @@
+.con{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.5);
+}
+
+.modal-pin{
+    position: fixed;
+    border-radius: 2rem;
+    top: 25vh;
+    left: 37.5vw;
+}
+
+.continue-button {
+    border: 0.5px solid #6379F4;
+    background: #6379F4;
+    box-shadow: 0px 6px 75px rgb(100 87 87 / 5%);
+    border-radius: 12px;
+    padding: 15px 35px 15px 35px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.continue-button:hover{
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color:#6379F4;
+}
+
+.close-modal{
+    cursor: pointer;
+}
