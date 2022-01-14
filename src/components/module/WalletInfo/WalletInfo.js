@@ -22,6 +22,7 @@ const WalletInfo = () => {
 
     useEffect(()=>{
         axios.get(`https://zwallet-dinda.herokuapp.com/user-wallet/${user.wallet_id}`)
+        // axios.get(`http://localhost:5000/user-wallet/${user.wallet_id}`)
         .then((res)=>{
             const result = res.data.data[0]
             setWallet(result)
