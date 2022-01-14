@@ -1,0 +1,26 @@
+.trans-history{
+    border-radius: 1.5rem;
+}
+
+.note-pic{
+    width: 20px;
+}
+
+.user-pic {
+    margin-top: 4rem;
+    width: 100px;
+}
+
+.text-secondary-custom {
+    justify-content: center;
+}
+
+.user-name, .text-secondary-custom{
+    color:gray;
+}
+
+.card-profile {
+    background-color: #dddddd;
+    border-radius: 1rem;
+    cursor: pointer;
+}
