@@ -50,3 +50,16 @@ a{
 .box-right-wrapper {
     height: 80%;
 }
+
+.pincode-input-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 4rem!important;
+}
+
+input.pincode-input-text {
+    height: 4rem!important;
+    border-radius: 1rem;
+    border: 1px solid #aaa5a5!important;
+}
