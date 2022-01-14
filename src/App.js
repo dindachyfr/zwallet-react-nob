@@ -8,6 +8,12 @@ import RequireAuth from './components/base/RequireAuth/RequireAuth';
 import TransferBlank from './pages/Transfer/Transfer1';
 import Transfer2 from './pages/Transfer/TransferBlank';
 import TransferConfirm from './pages/TransferConfirm/TransferConfirm';
+import CreatePin from './pages/CreatePin/CreatePin';
+import Profile from './pages/profile/Profile'
+import PersonalInfo from './pages/PersonalInfo/PersonalInfo';
+import ChangePin from './pages/ChangePin/ChangePin';
+import SetNewPin from './pages/SetNewPin/SetNewPin';
+import ManagePhone from './pages/ManagePhone.js/ManagePhone';
 
 const App = () => {
   return (
@@ -20,6 +26,7 @@ const App = () => {
 }/>
       <Route path="login" element={<Login/>}/>
       <Route path="register" element={<SignUp/>}/>
+      <Route path="register/create-pin" element={<CreatePin/>}/>
       <Route path="history" element={
       <RequireAuth>
         <History/>
@@ -40,6 +47,38 @@ const App = () => {
         <TransferConfirm/>
       </RequireAuth>
 }/>
+
+<Route path="profile" element={
+      // <RequireAuth>
+        <Profile/>
+      // </RequireAuth>
+}/>
+
+<Route path="profile/personal-info" element={
+      <RequireAuth>
+        <PersonalInfo/>
+      </RequireAuth>
+}/>
+
+<Route path="profile/managePIN" element={
+      <RequireAuth>
+        <ChangePin/>
+      </RequireAuth>
+}/>
+
+<Route path="profile/managePIN/set-new" element={
+      <RequireAuth>
+        <SetNewPin/>
+      </RequireAuth>
+}/>
+
+<Route path="profile/managephone" element={
+      <RequireAuth>
+        <ManagePhone/>
+      </RequireAuth>
+}/>
+
+
     </Routes>
     </BrowserRouter>
   )
