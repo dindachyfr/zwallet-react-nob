@@ -32,6 +32,8 @@ const RightBox = () => {
     e.preventDefault()
     setLoading(true)
     axios.post('https://zwallet-dinda.herokuapp.com/users/register',{
+    // axios.post('http://localhost:5000/users/register',{
+
         email: form.email,
         password: form.password,
         name: form.name
@@ -39,9 +41,10 @@ const RightBox = () => {
     .then((res)=>{
         const result = res.data.data
         console.log(result);
+        localStorage.setItem('pins', JSON.stringify(result))
         alert('register success')
         setLoading(false)
-        navigate('/login')
+        navigate('/register/create-pin')
     })
     .catch((err)=>{
         alert('register failed')
