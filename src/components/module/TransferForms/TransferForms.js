@@ -36,6 +36,7 @@ const TransferForms = () => {
 
     useEffect(()=>{
         axios.get(`https://zwallet-dinda.herokuapp.com/users/${id}`)
+        // axios.get(`http://localhost:5000/users/${id}`)
         .then((res)=>{
             const result = res.data.data[0]
             setReceiver(result)
@@ -49,6 +50,7 @@ const TransferForms = () => {
 
     const handleTransfer = () =>{
         axios.post('https://zwallet-dinda.herokuapp.com/transaction/transfer', {
+        // axios.post('http://localhost:5000/transaction/transfer', {
             sender_wallet_id: user.wallet_id, 
             receiver_wallet_id: receiver.wallet_id, 
             amount: form.amount, 
