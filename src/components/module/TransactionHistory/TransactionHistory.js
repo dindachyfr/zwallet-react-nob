@@ -10,7 +10,9 @@ const TransactionHistory = () => {
     const [transactions, setTransactions] = useState([]);
 
     useEffect(()=>{
-        axios.get('https://zwallet-dinda.herokuapp.com/transaction?limit=4')
+        axios.get(`https://zwallet-dinda.herokuapp.com/transaction?limit=4`)
+        // axios.get(`http://localhost:5000/transaction?limit=4`)
+
         .then((res)=>{
             const result = res.data.data
             setTransactions(result)
