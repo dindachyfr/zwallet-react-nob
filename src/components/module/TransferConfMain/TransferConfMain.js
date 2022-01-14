@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import UserImage from '../../../components/module/Navbar/NangIs-icon.svg'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import './modal.css'
+import PinInput from 'react-pin-input'
 
 const TransferConfMain = () => {
 
@@ -10,7 +12,7 @@ const TransferConfMain = () => {
     const transaction = JSON.parse(localStorage.getItem('transaction'))
 
     const navigate = useNavigate()
-
+    const [errorMsg , setErrorMsg]= useState("")
     const [receipt, setReceipt] = useState({
         receiver_wallet_id: 0,
         receiver: '',
@@ -20,8 +22,23 @@ const TransferConfMain = () => {
         notes: ''
     })
 
+    const [displayModal, setDisplayModal] = useState(false)
+
+    const handleModalDisplay = () => {
+        if(!displayModal){
+            setDisplayModal(true)
+        }
+    }
+
+    const handleModalDisplayNot = () => {
+        if (displayModal){
+            setDisplayModal(false)
+        }
+    }
+
     useEffect(()=>{
         axios.get(`https://zwallet-dinda.herokuapp.com/transaction/${transaction.insertId}`)
+        // axios.get(`http://localhost:5000/transaction/${transaction.insertId}`)
         .then((res)=>{
             const result = res.data.data[0]
             setReceipt(result)
@@ -34,15 +51,39 @@ const TransferConfMain = () => {
 
 
     const handleConfirm = ()=>{
-        axios.put(`https://zwallet-dinda.herokuapp.com/transaction/transfer/confirm/${user.wallet_id}/${transaction.insertId}`)
-        navigate('/')
-        setTimeout(()=>{
-            localStorage.removeItem('receiver')
-            localStorage.removeItem('transaction')
-            localStorage.removeItem('receipt')
-        },
-            1500)
+        axios.put(`https://zwallet-dinda.herokuapp.com/transaction/transfer/confirm/${user.id}/${user.wallet_id}/${transaction.insertId}`, {
+        // axios.put(`http://localhost:5000/transaction/transfer/confirm/${user.id}/${user.wallet_id}/${transaction.insertId}`, {
+
+            pin: pinValue
+        }).then((res) => {
+            navigate('/')
+            setTimeout(()=>{
+                localStorage.removeItem('receiver')
+                localStorage.removeItem('transaction')
+                localStorage.removeItem('receipt')
+            },
+                1500)
+            })
+            .catch((err)=>{
+                setErrorMsg("You entered the wrong PIN!")
+            })
+
     }
+
+    const [pinValue, setPinValue] = useState (0)
+    //     const [pinData, setPinData] = useState({
+    //         name: '',
+    //         phone_number: '',
+    //         email: '',
+    //         pin: 0,
+    //         wallet_id: 0,
+    //         balance: 0
+    // })
+        const handlePinChange = pinValue =>{
+            setPinValue(pinValue)
+        }
+        console.log(pinValue);
+    
 
 
     return (
@@ -99,11 +140,44 @@ const TransferConfMain = () => {
                 <div class='continue d-flex justify-content-end py-1'>
                     <button 
                     class='continue-button'
-                    onClick={handleConfirm}
+                    onClick={handleModalDisplay}
                     >Continue</button>
                 </div>
 
                 </div>
+                {displayModal &&
+                 <main class="con container-fluid d-flex flex-column p-0 justify-content-between">
+        <div class="modal-pin bg-light w-25 h-50 p-3 m-3">
+            <div class="top-modal d-flex justify-content-between m-3">
+              <h4>Enter PIN to Transfer</h4>
+              <h3 class="close-modal" onClick={handleModalDisplayNot}>x</h3>
+              </div>
+            <p class="text-secondary m-3 mb-5">Enter your 6 digits PIN to  confirm the transaction</p>
+            <PinInput 
+            length={6} 
+            initialValue=""
+            value={pinValue}
+            // secret 
+            onChange={handlePinChange} 
+            type="numeric" 
+            inputMode="number"
+            style={{padding: '10px'}}  
+            inputStyle={{borderColor: 'red'}}
+            inputFocusStyle={{borderColor: 'blue'}}
+            onComplete={(value, index) => {}}
+            autoSelect={true}
+            regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+            />
+            <div class="button-wrapper w-100 d-flex justify-content-end mt-5">
+            {errorMsg && <h4 className="text-danger">{errorMsg}</h4>}
+              <button 
+              class='continue-button mt-5'
+              onClick={handleConfirm}
+              >Continue</button>
+          </div>
+        </div>  
+      </main>
+       }
 
         </section>
         )
