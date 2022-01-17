@@ -1,33 +1,37 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+// eslint-disable-next-line no-unused-vars
+import React, { useContext, useEffect, useState } from 'react'
 import './personal-info.css'
 import { useNavigate } from 'react-router-dom'
+import { userContext } from '../../../Context/UserContext'
 
 const PersonalInfo2 = () => {
     const navigate = useNavigate()
-    const user = JSON.parse(localStorage.getItem('user'))
-    const [profile, setProfile] = useState({
-        id: 0,
-        name: "",
-        phone_number: "",
-        email: "",
-        pin: "",
-        wallet_id: 0,
-        balance: 0
-    })
+    // const user = JSON.parse(localStorage.getItem('user'))
+    const {profile, setProfile} = useContext(userContext)
+    // const [profile, setProfile] = useState({
+    //     id: 0,
+    //     name: "",
+    //     phone_number: "",
+    //     email: "",
+    //     pin: "",
+    //     wallet_id: 0,
+    //     balance: 0
+    // })
 
-    useEffect (()=>{
-        axios.get(`https://zwallet-dinda.herokuapp.com/users/${user.id}`)
-        .then((res)=>{
-            const result = res.data.data[0]
-            setProfile(result)
-        }).catch((err)=>{
-            console.log(err.response);
+    // useEffect (()=>{
+    //     axios.get(`https://zwallet-dinda.herokuapp.com/users/${user.id}`)
+    //     .then((res)=>{
+    //         const result = res.data.data[0]
+    //         setProfile(result)
+    //     }).catch((err)=>{
+    //         console.log(err.response);
 
-        })
+    //     })
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [])
 
     return (
         <section className="trans-history w-lg-75 w-100 bg-white shadow-sm p-lg-5">
