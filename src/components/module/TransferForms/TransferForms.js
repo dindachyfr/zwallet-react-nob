@@ -1,10 +1,12 @@
-import React, { useEffect, useState} from 'react'
+/* eslint-disable no-unused-vars */
+import React, { useContext, useEffect, useState} from 'react'
 import UserImage from '../../../components/module/Navbar/NangIs-icon.svg'
 import Input from '../../base/Input'
 import Note from './note-icon.svg'
 import './transfer-form.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import { walletContext } from '../../../Context/WalletContext'
 
 
 const TransferForms = () => {
@@ -12,6 +14,8 @@ const TransferForms = () => {
     const {id} = useParams() 
     const user = JSON.parse(localStorage.getItem('user'))
     const navigate = useNavigate()
+    const {wallet, setWallet} = useContext(walletContext)
+
     const [form, setForm] = useState({
         amount: 0,
         notes: ''
@@ -94,7 +98,7 @@ const TransferForms = () => {
                         placeholder="0.00" 
                         type="number"/>
                     </div>
-                    <h3 className='text-secondary mx-auto'>IDR {user.balance} Available</h3>
+                    <h3 className='text-secondary mx-auto'>IDR {wallet.balance} Available</h3>
                     <div className='input-notes mx-auto'>
                         <div className='d-flex wrapper-input-notes border-secondary border-bottom pb-1'>
                             <img src={Note} alt=''/>
@@ -102,7 +106,7 @@ const TransferForms = () => {
                             name="notes"
                             value={form.notes}
                             onChange={handleForm} 
-                            className='bg-transparent ms-3 border-0 text-secondary' 
+                            className='bg-transparent ms-3 border-0 text-secondary input-note' 
                             placeholder="Add some notes" 
                             type='text'/>
                         </div>
