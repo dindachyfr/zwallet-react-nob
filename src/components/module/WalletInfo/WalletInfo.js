@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react'
 import Button from '../../base/Button'
 import '../../../pages/Home/home.css'
@@ -5,37 +6,40 @@ import Transfer from './transfer-icon.png'
 import TopUp from './transfer-icon.png'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-// import { walletContext } from '../../../Context/WalletContext'
+import { walletContext } from '../../../Context/WalletContext'
+import { userContext } from '../../../Context/UserContext'
 
 const WalletInfo = () => {
-    const user = JSON.parse(localStorage.getItem('user'))
+    // const user = JSON.parse(localStorage.getItem('user'))
+    const {wallet, setWallet} = useContext(walletContext)
+    const {profile, setProfile} = useContext(userContext)
+
     const navigate = useNavigate()
-    const [wallet, setWallet] = useState({
-        id: 0,
-        user_id: 0,
-        balance: 0
-    })
+    // const [wallet, setWallet] = useState({
+    //     id: 0,
+    //     user_id: 0,
+    //     balance: 0
+    // })
 
     const moveToTransfer = ()=>{
         navigate('/transfer')
     }
 
-    useEffect(()=>{
-        axios.get(`https://zwallet-dinda.herokuapp.com/user-wallet/${user.wallet_id}`)
-        // axios.get(`http://localhost:5000/user-wallet/${user.wallet_id}`)
-        .then((res)=>{
-            const result = res.data.data[0]
-            setWallet(result)
-            localStorage.setItem('wallet', JSON.stringify(result))
-        })
-        .catch((err)=>{
-            console.log(err.response);
-        })
+    // useEffect(()=>{
+    //     axios.get(`https://zwallet-dinda.herokuapp.com/user-wallet/${user.wallet_id}`)
+    //     // axios.get(`http://localhost:5000/user-wallet/${user.wallet_id}`)
+    //     .then((res)=>{
+    //         const result = res.data.data[0]
+    //         setWallet(result)
+    //         localStorage.setItem('wallet', JSON.stringify(result))
+    //     })
+    //     .catch((err)=>{
+    //         console.log(err.response);
+    //     })
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    })
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+    // })
 
-    // const {wallet, setWallet} = useContext(walletContext)
 
 
     return (
@@ -44,7 +48,7 @@ const WalletInfo = () => {
             <div className="balance-left-home d-lg-flex d-none flex-column justify-content-between text-white">
                 <h3>Balance</h3>
                 <h1>IDR {wallet.balance}</h1>
-                <h3>0876-9283-3729</h3>
+                <h3>{profile.phone_number}</h3>
             </div>
 
             <div className="balance-right-home d-flex flex-lg-column align-items-center justify-content-between text-white pe-lg-5 py-lg-3">
