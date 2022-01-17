@@ -5,9 +5,10 @@ import UserImage from '../../../components/module/Navbar/NangIs-icon.svg'
 const TransHistory = () => {
 
     const [transactions, setTransactions] = useState([]);
+    const user = JSON.parse(localStorage.getItem('user'))
 
     useEffect(()=>{
-        axios.get(`https://zwallet-dinda.herokuapp.com/transaction?limit=4`)
+        axios.get(`https://zwallet-dinda.herokuapp.com/transaction/history/${user.wallet_id}?limit=4`)
         // axios.get(`http://localhost:5000/transaction?limit=4`)
         .then((res)=>{
             const result = res.data.data
