@@ -36,7 +36,7 @@ const ManagePhone2 = () => {
                             name="notes"
                             className='bg-transparent ms-3 border-0 text-secondary' 
                             placeholder="Enter your phone number" 
-                            type='text'/>
+                            type='number'/>
                         </div>
                         </div>
 
