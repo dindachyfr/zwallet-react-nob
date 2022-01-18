@@ -10,6 +10,15 @@ const PersonalInfo2 = () => {
     const navigate = useNavigate()
     // const user = JSON.parse(localStorage.getItem('user'))
     const {profile, setProfile} = useContext(userContext)
+
+    const handleManagePhone = () =>{
+        if(!profile.phone_number){
+            navigate('/profile/managephone')
+        }else {
+            navigate('/profile/managephone/existing')
+
+        }
+    }
     // const [profile, setProfile] = useState({
     //     id: 0,
     //     name: "",
@@ -55,7 +64,7 @@ const PersonalInfo2 = () => {
                         <h6 className='text-1'>Phone Number</h6>
                         <h4>{profile.phone_number}</h4>
                     </div>
-                    <h5 className='text-primary link-text' onClick={()=> navigate("/profile/managephone")}>Manage</h5>
+                    <h5 className='text-primary link-text' onClick={handleManagePhone}>Manage</h5>
                 </div>
             </section>    
 
