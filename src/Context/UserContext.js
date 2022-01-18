@@ -29,7 +29,7 @@ const UserContext = ({children}) => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    },[])
 
     return (
         <userContext.Provider value = {{profile, setProfile}}>
