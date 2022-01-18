@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Input from '../../base/Input'
 import Phone from './phone.svg'
 import './phone.css'
 import Button from '../../base/Button'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { userContext } from '../../../Context/UserContext'
 
 const ManagePhone2 = () => {
     const navigate = useNavigate()
     const user = JSON.parse(localStorage.getItem('user'))
     const [phone, setPhone] = useState("")
+    const {profile, setProfile} = useContext(userContext)
 
     const handleChange = (e) =>{
         setPhone(e.target.value)
@@ -19,6 +21,14 @@ const ManagePhone2 = () => {
     const setPhoneNumber = () =>{
         axios.put(`https://zwallet-dinda.herokuapp.com/users/phone/${user.id}`,
         { phone_number: phone })
+        .then((res)=>{
+            setProfile({
+                ...profile, 
+                phone_number: phone
+            })
+            navigate('/profile')
+
+        })
         navigate('/profile')
     }
 
