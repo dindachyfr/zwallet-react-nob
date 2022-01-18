@@ -47,6 +47,7 @@ const TransferConfMain = () => {
         .catch((err)=>{
             console.log(err.response);
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
