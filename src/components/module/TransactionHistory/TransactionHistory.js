@@ -12,8 +12,10 @@ const TransactionHistory = () => {
 
 
     useEffect(()=>{
-        axios.get(`https://zwallet-dinda.herokuapp.com/transaction/history/${user.wallet_id}?limit=4`)
+        // axios.get(`https://zwallet-dinda.herokuapp.com/transaction/history/${user.wallet_id}?limit=4`)
         // axios.get(`http://localhost:5000/transaction?limit=4`)
+        axios.get(`https://zwallet-dinda.herokuapp.com/transaction?limit=4`)
+
 
         .then((res)=>{
             const result = res.data.data
@@ -22,6 +24,7 @@ const TransactionHistory = () => {
             console.log(err.response);
 
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const moveToHistory = ()=>{
