@@ -14,6 +14,7 @@ import PersonalInfo from './pages/PersonalInfo/PersonalInfo';
 import ChangePin from './pages/ChangePin/ChangePin';
 import SetNewPin from './pages/SetNewPin/SetNewPin';
 import ManagePhone from './pages/ManagePhone.js/ManagePhone';
+import ManagePhonez from './pages/ManagePhone.js/ManagePhone2';
 
 const App = () => {
   return (
@@ -75,6 +76,12 @@ const App = () => {
 <Route path="profile/managephone" element={
       <RequireAuth>
         <ManagePhone/>
+      </RequireAuth>
+}/>
+
+<Route path="profile/managephone/existing" element={
+      <RequireAuth>
+        <ManagePhonez/>
       </RequireAuth>
 }/>
 
