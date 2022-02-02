@@ -1,43 +1,36 @@
-# Getting Started with Create React App
+# Zwallet App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project contains slicing codes from the Zwallet mockup which can be accessed at the following [link](https://www.figma.com/file/YddmKtK1PafpeyUkeSyIiq/Zwallet---Client%3A-Arkademy?node-id=0%3A1). It is currently still on development progress. Built using REACT JS for the frontend, whereas backend is using MySQL.
 
-## Available Scripts
+## How to clone
 
-In the project directory, you can run:
+In the project directory, you can follow steps below to clone it:
 
-### `npm start`
+###  `1. git clone https://github.com/dindachyfr/zwallet-react-nob.git`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+###  `2. npm install`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To install the packages within the project directory
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###  `3. npm start`
 
-### `npm run build`
+Please have fun trying out this project!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Available Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Dont have an account yet? Please **Sign Up**. Our register feature has been completed with verification email. Once you sign your email up to Zwallet, a verification link will be sent right away to your email so you'll be able to log in.
+- You can **Set your PIN** after finishing registration to secure your account, your wallet, and your data with 6 digits PIN you created yourself.
+- Have you activated your account through the verification on email? Well, lets **Log In** then!
+- All of your activity summaries will be shown on **Home Page**, including your **Transaction History** and **Balance Availability**
+- Setting new **profile picture** or **new PIN**, and **managing phone number**? Please go to **Profile** page >> **Personal Information** page
+- You can transfer some amount of money to other users by clicking the **Transfer** on sidebar of Home Page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Snippets
 
-### `npm run eject`
+- Login
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 ## Learn More
 
