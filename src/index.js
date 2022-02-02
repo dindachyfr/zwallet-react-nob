@@ -5,12 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import WalletContext from './Context/WalletContext'
 import UserContext from './Context/UserContext'
+import IncomeContext from './Context/IncomeContext'
+import ExpenseContext from './Context/ExpenseContext'
 
 ReactDOM.render(
   <React.StrictMode>
     <UserContext>
     <WalletContext>
+      <IncomeContext>
+        <ExpenseContext>
     <App />
+    </ExpenseContext>
+    </IncomeContext>
     </WalletContext>
     </UserContext>
   </React.StrictMode>,

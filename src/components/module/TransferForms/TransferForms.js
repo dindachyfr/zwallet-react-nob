@@ -15,6 +15,7 @@ const TransferForms = () => {
     const user = JSON.parse(localStorage.getItem('user'))
     const navigate = useNavigate()
     const {wallet, setWallet} = useContext(walletContext)
+    const [errMsg, setErrMsg] = useState("");
 
     const [form, setForm] = useState({
         amount: 0,
@@ -53,21 +54,25 @@ const TransferForms = () => {
     }, [])
 
     const handleTransfer = () =>{
-        axios.post('https://zwallet-dinda.herokuapp.com/transaction/transfer', {
-        // axios.post('http://localhost:5000/transaction/transfer', {
-            sender_wallet_id: user.wallet_id, 
-            receiver_wallet_id: receiver.wallet_id, 
-            amount: form.amount, 
-            notes: form.notes
-        })
-        .then((res)=>{
-            const result = res.data.data
-            localStorage.setItem('transaction', JSON.stringify(result))
-            navigate('/transfer/confirmation')
-        })
-        .catch((err)=>{
-            console.log(err.response);
-        })
+        if (form.amount > 0 ){
+            axios.post('https://zwallet-dinda.herokuapp.com/transaction/transfer', {
+                // axios.post('http://localhost:5000/transaction/transfer', {
+                    sender_wallet_id: user.wallet_id, 
+                    receiver_wallet_id: receiver.wallet_id, 
+                    amount: form.amount, 
+                    notes: form.notes
+                })
+                .then((res)=>{
+                    const result = res.data.data
+                    localStorage.setItem('transaction', JSON.stringify(result))
+                    navigate('/transfer/confirmation')
+                })
+                .catch((err)=>{
+                    console.log(err.response);
+                })
+                } else {
+                    setErrMsg("Please input valid amount only!")
+                }
     }
 
     return (
@@ -120,7 +125,7 @@ const TransferForms = () => {
                             </button>
                     </div>
                 </div>
-
+                {errMsg && <h3 className="text-danger">{errMsg}</h3>}
     </section>    
 )
 }

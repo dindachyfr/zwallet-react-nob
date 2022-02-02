@@ -36,9 +36,11 @@ const RightBoxLogin = () => {
     })
         .then((res)=>{
             setIsLoading(false)
-            const result = res.data.data
+            const result = res.data.data[0]
+            const token = result.token
             console.log(result);
             localStorage.setItem('auth', "1")
+            localStorage.setItem('token', token)
             localStorage.setItem('user', JSON.stringify(result))
             navigate('/')
         })

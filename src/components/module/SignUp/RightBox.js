@@ -39,7 +39,7 @@ const RightBox = () => {
         name: form.name
     })
     .then((res)=>{
-        const result = res.data.data
+        const result = res.data.data[0]
         console.log(result);
         localStorage.setItem('pins', JSON.stringify(result))
         alert('register success')

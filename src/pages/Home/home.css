@@ -63,3 +63,16 @@ input.pincode-input-text {
     border-radius: 1rem;
     border: 1px solid #aaa5a5!important;
 }
+
+span#addon-wrapping {
+    background: transparent;
+    border: none;
+    border-bottom: solid 1px #e8e6e6;
+}
+
+input.form-control {
+    background: transparent;
+    border: none;
+    border-bottom: solid 1px #e8e6e6;
+
+}
