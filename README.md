@@ -29,6 +29,10 @@ Please have fun trying out this project!
 ## Snippets
 
 - Login
+![login](./src/assets/login.jpg)
+
+- Sign Up
+![signUp](src/assets/signUp.jpg)
 
 
 
