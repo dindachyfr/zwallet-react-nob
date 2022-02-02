@@ -32,9 +32,40 @@ Please have fun trying out this project!
 ![login](./src/assets/login.jpg)
 
 - Sign Up
-![signUp](src/assets/signUp.jpg)
+![signUp](./src/assets/signUp.jpg)
 
+- Set up PIN after signing up
+![create-pin](./src/assets/create-pin.jpg)
 
+- Home Page
+![homePage](./src/assets/homePage.jpg)
+
+- Transfer History
+![transferHistory](./src/assets/transferHistory.jpg)
+
+- Search Receiver
+![searchReceiver](./src/assets/searchReceiver.jpg)
+
+- Transfer Forms
+![transferForm](./src/assets/transferForm.jpg)
+
+- Transfer Confirmation
+![transferConfirmation](./src/assets/transferConfirmation.jpg)
+
+- PIN Modal
+![pinModal](.src/../src/assets/pinModal.jpg)
+
+- Profile Page
+![profilePage](./src/assets/profilePage.jpg)
+
+- Personal Info
+![personalInfo](./src/assets/personalInfo.jpg)
+
+- Manage Phone
+![managePhone](./src/assets/managePhone.jpg)
+
+- Manage PIN
+![changePIN](./src/assets/changePIN.jpg)
 
 ## Learn More
 
