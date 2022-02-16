@@ -39,8 +39,8 @@ const TransferConfMain = () => {
     }
 
     useEffect(()=>{
-        axios.get(`https://zwallet-dinda.herokuapp.com/transaction/${transaction.insertId}`)
-        // axios.get(`http://localhost:5000/transaction/${transaction.insertId}`)
+        // axios.get(`https://zwallet-dinda.herokuapp.com/transaction/${transaction.insertId}`)
+        axios.get(`http://localhost:5000/transaction/${transaction.insertId}`)
         .then((res)=>{
             const result = res.data.data[0]
             setReceipt(result)
@@ -54,8 +54,8 @@ const TransferConfMain = () => {
 
 
     const handleConfirm = ()=>{
-        axios.put(`https://zwallet-dinda.herokuapp.com/transaction/transfer/confirm/${user.id}/${user.wallet_id}/${transaction.insertId}`, {
-        // axios.put(`http://localhost:5000/transaction/transfer/confirm/${user.id}/${user.wallet_id}/${transaction.insertId}`, {
+        // axios.put(`https://zwallet-dinda.herokuapp.com/transaction/transfer/confirm/${user.id}/${user.wallet_id}/${transaction.insertId}`, {
+        axios.put(`http://localhost:5000/transaction/transfer/confirm/${user.id}/${user.wallet_id}/${transaction.insertId}`, {
 
             pin: pinValue
         }).then((res) => {

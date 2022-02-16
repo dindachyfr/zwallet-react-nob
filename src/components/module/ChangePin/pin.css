@@ -1,12 +1,13 @@
-.pincode-input-container {
+/* .react-code-input {
     width: 50%;
-    display: flex;
+    display: flex!important;
     justify-content: space-between;
     margin-left: 4rem!important;
 }
-
-input.pincode-input-text {
+ */
+/* input {
     height: 4rem!important;
     border-radius: 1rem;
     border: 1px solid #aaa5a5!important;
-}
+    text-align: center;
+} */

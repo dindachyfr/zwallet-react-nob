@@ -1,16 +1,24 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Income from './income-icon.svg'
 import Expense from './expense-icon.svg'
 import MenuCenterImage from './menu-center-icon.svg'
 import '../../../pages/Home/home.css'
 import { incomeContext } from '../../../Context/IncomeContext'
-import { expenseContext } from '../../../Context/ExpenseContext'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getExpense } from '../../../redux-state/action/expense';
+import { getIncome } from '../../../redux-state/action/income';
 
 const TransactionInfo = () => {
-    const {income, setIncome} = useContext(incomeContext)
-    const {expense, setExpense} = useContext(expenseContext)
+    const dispatch = useDispatch()
+    const expenseData = useSelector((state)=> state.Expense)
+    const IncomeData = useSelector((state) => state.Income)
+    useEffect(()=>{
+      dispatch(getExpense())
+      dispatch(getIncome())
+    }, [])
+
+
     return (
         <section className="content-menu-home d-lg-block d-none  bg-white shadow-sm p-3 flex-grow-1">
         <div className="wrapper-content-menu-home d-flex flex-column h-100 justify-content-evenly">
@@ -18,13 +26,13 @@ const TransactionInfo = () => {
                 <figure className='transition-btt'>
                     <img src={Income} alt=''/>
                     <h4>Income</h4>
-                    <h3>IDR {income.amount}</h3>
+                    <h3>IDR {IncomeData.data.amount}</h3>
                 </figure>
        
                 <figure className='transition-btt'>
                     <img src={Expense} alt=''/>
                     <h4>Expense</h4>
-                    <h3>IDR {expense.amount}</h3>
+                    <h3>IDR {expenseData.data.amount}</h3>
                 </figure>
 
             </div>

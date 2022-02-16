@@ -19,7 +19,8 @@ const ManagePhone2 = () => {
     console.log(phone);
 
     const setPhoneNumber = () =>{
-        axios.put(`https://zwallet-dinda.herokuapp.com/users/phone/${user.id}`,
+        // axios.put(`https://zwallet-dinda.herokuapp.com/users/phone/${user.id}`,
+        axios.put(`http://localhost:5000/users/phone/${user.id}`,
         { phone_number: phone })
         .then((res)=>{
             setProfile({

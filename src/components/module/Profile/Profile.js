@@ -6,38 +6,24 @@ import './profile.css'
 import Note from '../TransferForms/note-icon.svg'
 import Arrow from './arrow-left.svg'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import { userContext } from '../../../Context/UserContext'
+import { useDispatch, useSelector } from 'react-redux';
+import { getProfile } from '../../../redux-state/action/profile';
 
 const ProfileMain = () => {
-    // const user = JSON.parse(localStorage.getItem('user'))
-    const {profile, setProfile} = useContext(userContext)
-    // const [profile, setProfile] = useState({
-    //     id: 0,
-    //     name: "",
-    //     phone_number: "",
-    //     email: "",
-    //     pin: "",
-    //     wallet_id: 0,
-    //     balance: 0
-    // })
+
+    const dispatch = useDispatch()
+    const profileData = useSelector((state)=> state.Profile)
+    useEffect(()=>{
+      dispatch(getProfile())
+    }, [])
+
+
     const navigate = useNavigate()
     const handleLogout = () =>{
         localStorage.clear()
         navigate('/login')
     }
 
-    // useEffect (()=>{
-    //     axios.get(`https://zwallet-dinda.herokuapp.com/users/${user.id}`)
-    //     .then((res)=>{
-    //         const result = res.data.data[0]
-    //         setProfile(result)
-    //     }).catch((err)=>{
-    //         console.log(err.response);
-
-    //     })
-
-    // }, [])
 
     return (
             <section class="trans-history w-lg-75 w-100 bg-white shadow-sm p-lg-3">               
@@ -49,8 +35,8 @@ const ProfileMain = () => {
                         <img className='note-pic' src={Note} alt="" />
                         <p className='m-0 ms-2'>Edit</p>
                         </div>
-                    <h3 className='user-name d-flex justify-content-center my-3'>{profile.name}</h3>
-                    <h5 className='text-secondary-custom d-flex'>{profile.phone_number}</h5>
+                    <h3 className='user-name d-flex justify-content-center my-3'>{profileData.data.name}</h3>
+                    <h5 className='text-secondary-custom d-flex'>{profileData.data.phone_number}</h5>
 
                 <div className='w-100 d-flex justify-content-center mt-5'>
                     <section className='d-flex card-profile w-50 justify-content-between py-3 p-3'

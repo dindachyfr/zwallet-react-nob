@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './pages/Home/Home';
 import Login from "./pages/Login/Login";
@@ -17,6 +17,7 @@ import ManagePhone from './pages/ManagePhone.js/ManagePhone';
 import ManagePhonez from './pages/ManagePhone.js/ManagePhone2';
 
 const App = () => {
+
   return (
     <BrowserRouter>
     <Routes>

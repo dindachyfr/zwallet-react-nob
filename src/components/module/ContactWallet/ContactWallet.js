@@ -5,64 +5,50 @@ import Search from './search-icon.svg'
 import UserImage from '../../../components/module/Navbar/NangIs-icon.svg'
 import axios from 'axios'
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../../../redux-state/action/user';
 
 
 const ContactWallet = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const querySearch = searchParams.get("search");
-    const [users, setUsers] = useState([]);
+    // const [users, setUsers] = useState([]);
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const usersData = useSelector((state)=> state.User)
+    // console.log(usersData);
+    useEffect(()=>{
+      dispatch(getUser(querySearch))
+    }, [querySearch])
+  
 
-    // useEffect(()=>{
-    //     axios.get('https://zwallet-dinda.herokuapp.com/users?limit=4')
-    //     .then((res)=>{
-    //         const result = res.data.data
-    //         setUsers(result)
-    //     }).catch((err)=>{
-    //         console.log(err.response);
-    //     })
-    // }, [])
+//     useEffect(() => {
+//         if (querySearch) {
+//           axios
+//             // .get(`https://zwallet-dinda.herokuapp.com/users?filter=${querySearch}&limit=4`)
+//             .get(`http://localhost:5000/users?filter=${querySearch}&limit=4`)
 
-    useEffect(() => {
-        if (querySearch) {
-          axios
-            .get(`https://zwallet-dinda.herokuapp.com/users?filter=${querySearch}&limit=4`)
-            // .get(`http://localhost:5000/users?filter=${querySearch}&limit=4`)
-
-            .then((res) => {
-              const result = res.data.data;
-            setUsers(result)
-})
-            .catch((err) => {
-              console.log(err.response);
-            });
-        } else {
-          axios
-          .get("https://zwallet-dinda.herokuapp.com/users?limit=4")
-        //   .get("http://localhost:5000/users?limit=4")
-          .then((res) => {
-              const result = res.data.data;
-              setUsers(result)
-            })
-            .catch((err) => {
-              console.log(err.response);
-            });
-        }
-      }, [querySearch]);
+//             .then((res) => {
+//               const result = res.data.data;
+//             setUsers(result)
+// })
+//             .catch((err) => {
+//               console.log(err.response);
+//             });
+//         } else {
+//           axios
+//           .get("https://zwallet-dinda.herokuapp.com/users?limit=4")
+//         //   .get("http://localhost:5000/users?limit=4")
+//           .then((res) => {
+//               const result = res.data.data;
+//               setUsers(result)
+//             })
+//             .catch((err) => {
+//               console.log(err.response);
+//             });
+//         }
+//       }, [querySearch]);
     
-    // const handleSearch = (e) =>{
-    //     axios
-    //       .get(
-    //         `https://zwallet-dinda.herokuapp.com/users?filter=${e.target.value}&limit=4`)
-    //       .then((res) => {
-    //         const result = res.data.data;
-    //         setUsers(result);
-    //       })
-    //       .catch((err) => {
-    //         console.log(err.response);
-    //       });
-    // }
-
     const handleSearch = (e) => {
         if (e.key === "Enter") {
           setSearchParams({ search: e.target.value });
@@ -89,11 +75,11 @@ const ContactWallet = () => {
 
                 </div>
                 <div class="history-lower h-100 d-flex flex-column justify-content-evenly px-lg-5 pt-3 pt-lg-0">
-                    {users.map((user)=>{
+                    {usersData?.data.map((user)=>{
                         return (
                             <div class='recipient d-flex justify-content-between align-items-between shadow-sm' 
                             onClick={()=>navigate(`/transfer/${user.id}`)}>
-                            <div class="recipient d-flex">
+                            <div class="recipient d-flex p-3">
                                 <img src={UserImage} alt=''/>
                                 <div className='text-secondary ms-3'>
                                     <h5>{user.name}</h5>

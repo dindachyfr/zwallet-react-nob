@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import PinInput from 'react-pin-input'
+import ReactCodeInput from 'react-code-input'
 // eslint-disable-next-line no-unused-vars
 import { useNavigate } from 'react-router-dom'
 import Button from '../../base/Button'
@@ -8,17 +8,38 @@ import './pin.css'
 
 const SetPinNew = () => {
 
+    const props = {
+        inputStyle: {
+          fontFamily: 'monospace',
+          margin:  '4px',
+          MozAppearance: 'textfield',
+          width: '4rem',
+          borderRadius: '1rem',
+          fontSize: '1rem',
+          height: '4rem',
+          paddingLeft: '7px',
+          backgroundColor: 'white',
+          color: 'grey',
+          textAlign: 'center',
+          border: '1px solid #aaa5a5'
+        },
+        inputStyleInvalid: {
+          fontFamily: 'monospace',
+          margin:  '4px',
+          MozAppearance: 'textfield',
+          width: '15px',
+          borderRadius: '3px',
+          fontSize: '14px',
+          height: '26px',
+          paddingLeft: '7px',
+          backgroundColor: 'black',
+          color: 'red',
+          border: '1px solid red'
+        }
+      }
+
     const navigate = useNavigate()
     const [pinValue, setPinValue] = useState (0)
-    //     const [pinData, setPinData] = useState({
-    //         name: '',
-    //         phone_number: '',
-    //         email: '',
-    //         pin: 0,
-    //         wallet_id: 0,
-    //         balance: 0
-    // })
-        // eslint-disable-next-line no-unused-vars
     const user = JSON.parse(localStorage.getItem('user'))
     const handlePinChange = pinValue =>{
         setPinValue(pinValue)
@@ -26,8 +47,8 @@ const SetPinNew = () => {
     console.log(pinValue);
     
     const handleSetPin = () =>{
-        axios.put(`https://zwallet-dinda.herokuapp.com/users/pin/${user.id}`, {    
-        // axios.put(`http://localhost:5000/users/pin/${pins.insertId}`, {
+        // axios.put(`https://zwallet-dinda.herokuapp.com/users/pin/${user.id}`, {    
+        axios.put(`http://localhost:5000/users/pin/${user.id}`, {
                 pin: pinValue
         })
         navigate('/profile')
@@ -39,20 +60,15 @@ const SetPinNew = () => {
             <p className='my-5 w-50'>Type your new 6 digits PIN to use in ZWallet</p>
 
             <section className='w-100 h-50 d-flex justify-content-center'>
-            <PinInput 
-            length={6} 
+            <ReactCodeInput 
+            fields={6} 
             initialValue=""
             value={pinValue}
             // secret 
             onChange={handlePinChange} 
-            type="numeric" 
+            type="number" 
             inputMode="number"
-            style={{padding: '10px'}}  
-            inputStyle={{borderColor: 'red'}}
-            inputFocusStyle={{borderColor: 'blue'}}
-            onComplete={(value, index) => {}}
-            autoSelect={true}
-            regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+            {...props}
             />
 
             </section>

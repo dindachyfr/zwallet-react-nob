@@ -31,8 +31,8 @@ const RightBox = () => {
     const handleRegister = (e)=>{
     e.preventDefault()
     setLoading(true)
-    axios.post('https://zwallet-dinda.herokuapp.com/users/register',{
-    // axios.post('http://localhost:5000/users/register',{
+    // axios.post('https://zwallet-dinda.herokuapp.com/users/register',{
+    axios.post('http://localhost:5000/users/register',{
 
         email: form.email,
         password: form.password,

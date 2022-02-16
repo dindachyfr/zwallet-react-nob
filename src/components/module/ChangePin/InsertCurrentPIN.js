@@ -1,23 +1,42 @@
 import React, { useState } from 'react'
-import PinInput from 'react-pin-input'
+import ReactCodeInput from 'react-code-input'
 import Button from '../../base/Button'
-import './pin.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const InsertCurrentPIN = () => {
+    const props = {
+        inputStyle: {
+          fontFamily: 'monospace',
+          margin:  '4px',
+          MozAppearance: 'textfield',
+          width: '4rem',
+          borderRadius: '1rem',
+          fontSize: '1rem',
+          height: '4rem',
+          paddingLeft: '7px',
+          backgroundColor: 'white',
+          color: 'grey',
+          textAlign: 'center',
+          border: '1px solid #aaa5a5'
+        },
+        inputStyleInvalid: {
+          fontFamily: 'monospace',
+          margin:  '4px',
+          MozAppearance: 'textfield',
+          width: '15px',
+          borderRadius: '3px',
+          fontSize: '14px',
+          height: '26px',
+          paddingLeft: '7px',
+          backgroundColor: 'black',
+          color: 'red',
+          border: '1px solid red'
+        }
+      }
     const navigate = useNavigate()
     const [pinValue, setPinValue] = useState (0)
     const [errorMsg, setErrorMsg] = useState("")
-    //     const [pinData, setPinData] = useState({
-    //         name: '',
-    //         phone_number: '',
-    //         email: '',
-    //         pin: 0,
-    //         wallet_id: 0,
-    //         balance: 0
-    // })
-        // eslint-disable-next-line no-unused-vars
         const user = JSON.parse(localStorage.getItem('user'))
         const handlePinChange = pinValue =>{
             setPinValue(pinValue)
@@ -25,7 +44,9 @@ const InsertCurrentPIN = () => {
         console.log(pinValue);
 
         const continueChangePIN = () =>{
-            axios.post(`https://zwallet-dinda.herokuapp.com/users/pinconfirm/${user.id}`, {
+            // axios.post(`https://zwallet-dinda.herokuapp.com/users/pinconfirm/${user.id}`, {
+            axios.post(`http://localhost:5000/users/pinconfirm/${user.id}`, {
+
                 pin: pinValue
             }).then ((res)=>{
                 navigate('/profile/managePIN/set-new')
@@ -44,20 +65,15 @@ const InsertCurrentPIN = () => {
             <p className='my-5 w-50'>Enter your current 6 digits PIN below to continue to the next step</p>
 
             <section className='w-100 h-50 d-flex justify-content-center'>
-            <PinInput 
-            length={6} 
+            <ReactCodeInput 
+            fields={6} 
             initialValue=""
             value={pinValue}
             // secret 
             onChange={handlePinChange} 
-            type="numeric" 
+            type="number" 
             inputMode="number"
-            style={{padding: '10px'}}  
-            inputStyle={{borderColor: 'red'}}
-            inputFocusStyle={{borderColor: 'blue'}}
-            onComplete={(value, index) => {}}
-            autoSelect={true}
-            regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+            {...props}
             />
 
             </section>

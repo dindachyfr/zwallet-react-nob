@@ -40,8 +40,8 @@ const TransferForms = () => {
 
 
     useEffect(()=>{
-        axios.get(`https://zwallet-dinda.herokuapp.com/users/${id}`)
-        // axios.get(`http://localhost:5000/users/${id}`)
+        // axios.get(`https://zwallet-dinda.herokuapp.com/users/${id}`)
+        axios.get(`http://localhost:5000/users/${id}`)
         .then((res)=>{
             const result = res.data.data[0]
             setReceiver(result)

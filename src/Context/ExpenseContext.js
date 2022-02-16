@@ -13,7 +13,8 @@ const ExpenseContext = ({children}) => {
 
     useEffect (()=>{
         if(user){
-        axios.get(`https://zwallet-dinda.herokuapp.com/transaction/transfer/expense/user/${user.wallet_id}`)
+        // axios.get(`https://zwallet-dinda.herokuapp.com/transaction/transfer/expense/user/${user.wallet_id}`)
+        axios.get(`http://localhost:5000/transaction/transfer/expense/user/${user.wallet_id}`)
         .then((res)=>{
             const result = res.data.data[0]
             setExpense(result)

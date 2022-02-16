@@ -7,6 +7,8 @@ import WalletContext from './Context/WalletContext'
 import UserContext from './Context/UserContext'
 import IncomeContext from './Context/IncomeContext'
 import ExpenseContext from './Context/ExpenseContext'
+import { Provider } from 'react-redux'
+import store from './redux-state/store/store'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,7 +16,9 @@ ReactDOM.render(
     <WalletContext>
       <IncomeContext>
         <ExpenseContext>
+        <Provider store={store}>
     <App />
+    </Provider>
     </ExpenseContext>
     </IncomeContext>
     </WalletContext>

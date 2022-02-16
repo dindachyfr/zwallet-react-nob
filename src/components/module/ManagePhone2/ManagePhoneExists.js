@@ -13,7 +13,8 @@ const ManagePhoneExists = () => {
     const {profile, setProfile} = useContext(userContext)
 
     const setPhoneNumber = () =>{
-        axios.put(`https://zwallet-dinda.herokuapp.com/users/phone/${user.id}`,
+        // axios.put(`https://zwallet-dinda.herokuapp.com/users/phone/${user.id}`,
+        axios.put(`http://localhost:5000/users/phone/${user.id}`,
         { phone_number: "" })
         .then((res)=> {
             setProfile({
