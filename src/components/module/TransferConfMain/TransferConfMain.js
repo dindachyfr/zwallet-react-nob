@@ -1,29 +1,50 @@
 import React, { useContext, useEffect, useState } from 'react'
 import UserImage from '../../../components/module/Navbar/NangIs-icon.svg'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import './modal.css'
-import PinInput from 'react-pin-input'
+import ReactCodeInput from 'react-code-input'
 import { walletContext } from '../../../Context/WalletContext'
+import { useDispatch, useSelector } from 'react-redux';
+import { getTransaction } from '../../../redux-state/action/transactionByID';
+import { getWallet } from '../../../redux-state/action/wallet'
+import { putTransaction } from '../../../redux-state/action/putTransaction'
 
 const TransferConfMain = () => {
 
-    const receiver = JSON.parse(localStorage.getItem('receiver'))
-    const user = JSON.parse(localStorage.getItem('user'))
-    const {wallet, setWallet} = useContext(walletContext)
-    const transaction = JSON.parse(localStorage.getItem('transaction'))
+    const props = {
+        inputStyle: {
+          fontFamily: 'monospace',
+          margin:  '4px',
+          MozAppearance: 'textfield',
+          width: '4rem',
+          borderRadius: '1rem',
+          fontSize: '1rem',
+          height: '4rem',
+          backgroundColor: 'white',
+          color: 'grey',
+          textAlign: 'center',
+          border: '1px solid #aaa5a5'
+        },
+        inputStyleInvalid: {
+          fontFamily: 'monospace',
+          margin:  '4px',
+          MozAppearance: 'textfield',
+          width: '15px',
+          borderRadius: '3px',
+          fontSize: '14px',
+          height: '26px',
+          paddingLeft: '7px',
+          backgroundColor: 'black',
+          color: 'red',
+          border: '1px solid red'
+        }
+      }
 
+    const receiver = JSON.parse(localStorage.getItem('receiver'))
+    const transaction = JSON.parse(localStorage.getItem('transaction'))
+    const transID = transaction.data.insertId
     const navigate = useNavigate()
     const [errorMsg , setErrorMsg]= useState("")
-    const [receipt, setReceipt] = useState({
-        receiver_wallet_id: 0,
-        receiver: '',
-        phone_number: '',
-        amount: 0,
-        date: '',
-        notes: ''
-    })
-
     const [displayModal, setDisplayModal] = useState(false)
 
     const handleModalDisplay = () => {
@@ -38,50 +59,20 @@ const TransferConfMain = () => {
         }
     }
 
+    const dispatch = useDispatch()
+    const receiptData = useSelector((state)=> state.TransactionByID)
+    const walletData = useSelector((state) => state.Wallet)
+    console.log(receiptData);
     useEffect(()=>{
-        // axios.get(`https://zwallet-dinda.herokuapp.com/transaction/${transaction.insertId}`)
-        axios.get(`http://localhost:5000/transaction/${transaction.insertId}`)
-        .then((res)=>{
-            const result = res.data.data[0]
-            setReceipt(result)
-            localStorage.setItem('receipt', JSON.stringify(result))
-        })
-        .catch((err)=>{
-            console.log(err.response);
-        })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      dispatch(getTransaction(transaction.data.insertId))
+      dispatch(getWallet())
     }, [])
 
-
-    const handleConfirm = ()=>{
-        // axios.put(`https://zwallet-dinda.herokuapp.com/transaction/transfer/confirm/${user.id}/${user.wallet_id}/${transaction.insertId}`, {
-        axios.put(`http://localhost:5000/transaction/transfer/confirm/${user.id}/${user.wallet_id}/${transaction.insertId}`, {
-
-            pin: pinValue
-        }).then((res) => {
-            navigate('/')
-            setTimeout(()=>{
-                localStorage.removeItem('receiver')
-                localStorage.removeItem('transaction')
-                localStorage.removeItem('receipt')
-            },
-                1500)
-            })
-            .catch((err)=>{
-                setErrorMsg("You entered the wrong PIN!")
-            })
-
+    const handleConfirm = () => {
+        dispatch(putTransaction({pinValue, navigate, setErrorMsg, transID}))
     }
 
     const [pinValue, setPinValue] = useState (0)
-    //     const [pinData, setPinData] = useState({
-    //         name: '',
-    //         phone_number: '',
-    //         email: '',
-    //         pin: 0,
-    //         wallet_id: 0,
-    //         balance: 0
-    // })
         const handlePinChange = pinValue =>{
             setPinValue(pinValue)
         }
@@ -112,13 +103,13 @@ const TransferConfMain = () => {
                         <div class='recipient inner shadow-sm my-md-1 mx-lg-0 mx-1'>
                             <div class="recipient p-2">
                                 <p class='text-secondary'>Amount</p>
-                                <h4 class='text-secondary'>IDR {receipt.amount}</h4>
+                                <h4 class='text-secondary'>IDR {receiptData.data.amount}</h4>
                              </div>
                         </div>
                         <div class='recipient inner shadow-sm my-md-1 mx-lg-0 mx-1'>
                             <div class="recipient p-2">
                                 <p class='text-secondary'>Balance</p>
-                                <h4 class='text-secondary'>{wallet.balance}</h4>
+                                <h4 class='text-secondary'>{walletData.data.balance}</h4>
                              </div>
                         </div>
                         </div>
@@ -127,14 +118,14 @@ const TransferConfMain = () => {
                             <div class='recipient inner shadow-sm my-md-1 mx-lg-0 mx-1'>
                                 <div class="recipient p-2">
                                     <p class='text-secondary'>Date</p>
-                                    <h4 class='text-secondary'>{receipt.date}</h4>
+                                    <h4 class='text-secondary'>{receiptData.data.date}</h4>
                                 </div>
                             </div>
                     </div>
                     <div class='recipient shadow-sm my-md-1'>
                         <div class="recipient p-2">
                             <p class='text-secondary'>Notes</p>
-                            <h4 class='text-secondary'>{receipt.notes}</h4>
+                            <h4 class='text-secondary'>{receiptData.data.notes}</h4>
                          </div>
                     </div>
 
@@ -156,20 +147,15 @@ const TransferConfMain = () => {
               <h3 class="close-modal" onClick={handleModalDisplayNot}>x</h3>
               </div>
             <p class="text-secondary m-3 mb-5">Enter your 6 digits PIN to  confirm the transaction</p>
-            <PinInput 
-            length={6} 
+            <ReactCodeInput 
+            fields={6} 
             initialValue=""
             value={pinValue}
             // secret 
             onChange={handlePinChange} 
-            type="numeric" 
+            type="number" 
             inputMode="number"
-            style={{padding: '10px'}}  
-            inputStyle={{borderColor: 'red'}}
-            inputFocusStyle={{borderColor: 'blue'}}
-            onComplete={(value, index) => {}}
-            autoSelect={true}
-            regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+            {...props}
             />
             <div class="button-wrapper w-100 d-flex justify-content-end mt-5">
             {errorMsg && <h4 className="text-danger">{errorMsg}</h4>}

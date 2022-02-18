@@ -5,6 +5,7 @@ import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import History from './pages/History/History'
 import RequireAuth from './components/base/RequireAuth/RequireAuth';
+import PublicRoute from './components/base/RequireAuth/PublicRoute';
 import TransferBlank from './pages/Transfer/Transfer1';
 import Transfer2 from './pages/Transfer/TransferBlank';
 import TransferConfirm from './pages/TransferConfirm/TransferConfirm';
@@ -26,9 +27,18 @@ const App = () => {
       <Home/> 
     </RequireAuth>
 }/>
-      <Route path="login" element={<Login/>}/>
-      <Route path="register" element={<SignUp/>}/>
-      <Route path="register/create-pin" element={<CreatePin/>}/>
+      <Route path="login" element={
+      <PublicRoute>
+      <Login/>
+      </PublicRoute>}/>
+      <Route path="register" element={
+      <PublicRoute>
+      <SignUp/>
+      </PublicRoute>}/>
+      <Route path="register/create-pin" element={
+      <PublicRoute>
+      <CreatePin/>
+      </PublicRoute>}/>
       <Route path="history" element={
       <RequireAuth>
         <History/>
@@ -51,9 +61,9 @@ const App = () => {
 }/>
 
 <Route path="profile" element={
-      // <RequireAuth>
+      <RequireAuth>
         <Profile/>
-      // </RequireAuth>
+     </RequireAuth>
 }/>
 
 <Route path="profile/personal-info" element={

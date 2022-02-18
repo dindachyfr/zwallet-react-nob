@@ -5,6 +5,8 @@ import ReactCodeInput from 'react-code-input'
 import { useNavigate } from 'react-router-dom'
 import Button from '../../base/Button'
 import './pin.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { putPIN } from '../../../redux-state/action/putPIN';
 
 const SetPinNew = () => {
 
@@ -45,13 +47,22 @@ const SetPinNew = () => {
         setPinValue(pinValue)
     }
     console.log(pinValue);
+
+    const dispatch = useDispatch()
+    const putPINData = useSelector((state)=> state.PutPIN)
+    console.log(putPINData);
+
     
-    const handleSetPin = () =>{
-        // axios.put(`https://zwallet-dinda.herokuapp.com/users/pin/${user.id}`, {    
-        axios.put(`http://localhost:5000/users/pin/${user.id}`, {
-                pin: pinValue
-        })
-        navigate('/profile')
+    // const handleSetPin = () =>{
+    //     // axios.put(`https://zwallet-dinda.herokuapp.com/users/pin/${user.id}`, {    
+    //     axios.put(`http://localhost:5000/users/pin/${user.id}`, {
+    //             pin: pinValue
+    //     })
+    //     navigate('/profile')
+    // }
+
+    const handleSetPin = () => {
+      dispatch(putPIN(pinValue, navigate, user.id))
     }
     
     return (

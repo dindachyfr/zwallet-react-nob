@@ -5,7 +5,8 @@ import Button from '../../base/Button'
 import ReactCodeInput from 'react-code-input'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { putPIN } from '../../../redux-state/action/putPIN';
 
 const RightBox = () => {
 
@@ -47,17 +48,26 @@ const RightBox = () => {
     }
     console.log(pinValue);
 
-const handleSetPin = () =>{
-    // axios.put(`https://zwallet-dinda.herokuapp.com/users/pin/${pins.insertId}`, {    
-    axios.put(`http://localhost:5000/users/pin/${pins.insertId}`, {
-            pin: pinValue
-    })
-    navigate('/login')
-    setTimeout(()=>{
-        localStorage.clear()
-    },
-        1500)
-}
+    const dispatch = useDispatch()
+    const putPINData = useSelector((state)=> state.PutPIN)
+    console.log(putPINData);
+
+
+// const handleSetPin = () =>{
+//     // axios.put(`https://zwallet-dinda.herokuapp.com/users/pin/${pins.insertId}`, {    
+//     axios.put(`http://localhost:5000/users/pin/${pins[0].insertId}`, {
+//             pin: pinValue
+//     })
+//     navigate('/login')
+//     setTimeout(()=>{
+//         localStorage.clear()
+//     },
+//         1500)
+// }
+
+    const handleSetPin = () => {
+        dispatch(putPIN(pinValue, navigate, pins[0].insertId))
+    }
 
     return (
         <section className="box box-right p-5">

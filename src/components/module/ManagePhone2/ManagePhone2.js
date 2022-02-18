@@ -6,31 +6,20 @@ import Button from '../../base/Button'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { userContext } from '../../../Context/UserContext'
+import { useDispatch } from 'react-redux'
+import { putPhone } from '../../../redux-state/action/putPhone'
 
 const ManagePhone2 = () => {
     const navigate = useNavigate()
-    const user = JSON.parse(localStorage.getItem('user'))
     const [phone, setPhone] = useState("")
-    const {profile, setProfile} = useContext(userContext)
-
+    const dispatch = useDispatch()
     const handleChange = (e) =>{
         setPhone(e.target.value)
     }
     console.log(phone);
 
-    const setPhoneNumber = () =>{
-        // axios.put(`https://zwallet-dinda.herokuapp.com/users/phone/${user.id}`,
-        axios.put(`http://localhost:5000/users/phone/${user.id}`,
-        { phone_number: phone })
-        .then((res)=>{
-            setProfile({
-                ...profile, 
-                phone_number: phone
-            })
-            navigate('/profile')
-
-        })
-        navigate('/profile')
+    const setPhoneNumber = () => {
+        dispatch(putPhone({navigate, phone}))
     }
 
     return (

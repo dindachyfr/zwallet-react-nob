@@ -22,33 +22,6 @@ const ContactWallet = () => {
     }, [querySearch])
   
 
-//     useEffect(() => {
-//         if (querySearch) {
-//           axios
-//             // .get(`https://zwallet-dinda.herokuapp.com/users?filter=${querySearch}&limit=4`)
-//             .get(`http://localhost:5000/users?filter=${querySearch}&limit=4`)
-
-//             .then((res) => {
-//               const result = res.data.data;
-//             setUsers(result)
-// })
-//             .catch((err) => {
-//               console.log(err.response);
-//             });
-//         } else {
-//           axios
-//           .get("https://zwallet-dinda.herokuapp.com/users?limit=4")
-//         //   .get("http://localhost:5000/users?limit=4")
-//           .then((res) => {
-//               const result = res.data.data;
-//               setUsers(result)
-//             })
-//             .catch((err) => {
-//               console.log(err.response);
-//             });
-//         }
-//       }, [querySearch]);
-    
     const handleSearch = (e) => {
         if (e.key === "Enter") {
           setSearchParams({ search: e.target.value });

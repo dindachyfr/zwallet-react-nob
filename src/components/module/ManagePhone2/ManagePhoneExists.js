@@ -1,28 +1,26 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Trash from './trash.svg'
 import './phone.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { userContext } from '../../../Context/UserContext'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getProfile } from '../../../redux-state/action/profile';
+import { putPhone } from '../../../redux-state/action/putPhone'
 
 const ManagePhoneExists = () => {
 
     const navigate = useNavigate()
     const user = JSON.parse(localStorage.getItem('user'))
-    const {profile, setProfile} = useContext(userContext)
+    const dispatch = useDispatch()
+    const profileData = useSelector((state)=> state.Profile)
 
-    const setPhoneNumber = () =>{
-        // axios.put(`https://zwallet-dinda.herokuapp.com/users/phone/${user.id}`,
-        axios.put(`http://localhost:5000/users/phone/${user.id}`,
-        { phone_number: "" })
-        .then((res)=> {
-            setProfile({
-                ...profile, 
-                phone_number: ""
-            })
-            navigate('/profile')
-        })
+    useEffect(()=>{
+        dispatch(getProfile())
+      }, [])
+  
+    const setPhoneNumber = () => {
+        dispatch(putPhone({navigate, phone: ""}))
     }
 
     return (
@@ -33,7 +31,7 @@ const ManagePhoneExists = () => {
             <section className='w-100 p-3 shadow-sm my-5'>
             <p className='text-secondary'>Primary</p>
             <div className='d-flex justify-content-between w-100'>
-                    <h2>{profile.phone_number}</h2>
+                    <h2>{profileData.data.phone_number}</h2>
                     <img 
                     className='link-text'
                     onClick={setPhoneNumber}

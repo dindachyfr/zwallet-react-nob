@@ -7,12 +7,14 @@ import './transfer-form.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { walletContext } from '../../../Context/WalletContext'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getUID } from '../../../redux-state/action/userByID';
+import { postTransfer } from '../../../redux-state/action/postTransfer'
 
 const TransferForms = () => {
-
     const {id} = useParams() 
     const user = JSON.parse(localStorage.getItem('user'))
+    const receiver = JSON.parse(localStorage.getItem('receiver'))
     const navigate = useNavigate()
     const {wallet, setWallet} = useContext(walletContext)
     const [errMsg, setErrMsg] = useState("");
@@ -20,14 +22,6 @@ const TransferForms = () => {
     const [form, setForm] = useState({
         amount: 0,
         notes: ''
-    })
-    const [receiver, setReceiver] = useState({
-        id: '',
-        name: '',
-        phone_number: '',
-        email: '',
-        wallet_id: 0,
-        balance: 0
     })
 
     const handleForm = (e)=>{
@@ -38,55 +32,62 @@ const TransferForms = () => {
         console.log(form);
     }
 
-
+    const dispatch = useDispatch()
+    const receiverData = useSelector((state)=> state.UserByID)
+    console.log(receiverData);
     useEffect(()=>{
-        // axios.get(`https://zwallet-dinda.herokuapp.com/users/${id}`)
-        axios.get(`http://localhost:5000/users/${id}`)
-        .then((res)=>{
-            const result = res.data.data[0]
-            setReceiver(result)
-            localStorage.setItem('receiver', JSON.stringify(result))
-        })
-        .catch((err)=>{
-            console.log(err.response);
-        })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      dispatch(getUID(id))
     }, [])
 
-    const handleTransfer = () =>{
-        if (form.amount > 0 ){
-            axios.post('https://zwallet-dinda.herokuapp.com/transaction/transfer', {
-                // axios.post('http://localhost:5000/transaction/transfer', {
-                    sender_wallet_id: user.wallet_id, 
-                    receiver_wallet_id: receiver.wallet_id, 
-                    amount: form.amount, 
-                    notes: form.notes
-                })
-                .then((res)=>{
-                    const result = res.data.data
-                    localStorage.setItem('transaction', JSON.stringify(result))
-                    navigate('/transfer/confirmation')
-                })
-                .catch((err)=>{
-                    console.log(err.response);
-                })
-                } else {
-                    setErrMsg("Please input valid amount only!")
-                }
+    const handleTransfer = () => {
+        if(form.amount > 0){
+            dispatch(postTransfer({
+                amount: form.amount,
+                notes: form.notes,
+                sender_wallet_id: user.wallet_id, 
+                receiver_wallet_id: receiver.wallet_id, 
+                navigate,
+                setErrMsg
+            }))
+        } else{
+            setErrMsg("Please input valid amount only!")
+        }
     }
+
+    // const handleTransfer = () =>{
+    //     if (form.amount > 0 ){
+    //         axios.post('https://zwallet-dinda.herokuapp.com/transaction/transfer', {
+    //             // axios.post('http://localhost:5000/transaction/transfer', {
+    //                 sender_wallet_id: user.wallet_id, 
+    //                 receiver_wallet_id: receiver.wallet_id, 
+    //                 amount: form.amount, 
+    //                 notes: form.notes
+    //             })
+    //             .then((res)=>{
+    //                 const result = res.data.data
+    //                 localStorage.setItem('transaction', JSON.stringify(result))
+    //                 navigate('/transfer/confirmation')
+    //             })
+    //             .catch((err)=>{
+    //                 console.log(err.response);
+    //             })
+    //             } else {
+    //                 setErrMsg("Please input valid amount only!")
+    //             }
+    // }
 
     return (
         <section className="trans-history h-100 w-lg-75 w-100 d-flex flex-column bg-white shadow-sm p-lg-3 flex-grow-3">               
         <div className="history-upper d-flex flex-column px-5 py-lg-0 py-3 w-100">  
             <h3 className="text-secondary pt-lg-3 p-3 p-lg-0 title-history">Transfer to</h3>
             <div class='recipient d-flex justify-content-between align-items-between shadow-sm py-1'>
-                        <div class="recipient d-flex ms-3">
+                        <div class="recipient d-flex ms-3 py-3">
                             <img src={UserImage} alt=''/>
                             <div className='text-secondary ms-3'>
                                 {/* <h5>Cahyono</h5> */}
-                                <h5>{receiver.name}</h5>
+                                <h5>{receiverData.data.name}</h5>
                                 {/* <h5>082783826409</h5> */}
-                                <h5>{receiver.phone_number}</h5>
+                                <h5>{receiverData.data.phone_number}</h5>
                             </div>
                         </div>
             </div>       

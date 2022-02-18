@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactCodeInput from 'react-code-input'
 import Button from '../../base/Button'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
+import { postPIN } from '../../../redux-state/action/postPIN';
+
 
 const InsertCurrentPIN = () => {
     const props = {
@@ -37,27 +40,20 @@ const InsertCurrentPIN = () => {
     const navigate = useNavigate()
     const [pinValue, setPinValue] = useState (0)
     const [errorMsg, setErrorMsg] = useState("")
-        const user = JSON.parse(localStorage.getItem('user'))
         const handlePinChange = pinValue =>{
             setPinValue(pinValue)
         }
         console.log(pinValue);
 
-        const continueChangePIN = () =>{
-            // axios.post(`https://zwallet-dinda.herokuapp.com/users/pinconfirm/${user.id}`, {
-            axios.post(`http://localhost:5000/users/pinconfirm/${user.id}`, {
+    const dispatch = useDispatch()
+    const postPINData = useSelector((state)=> state.PostPIN)
+    console.log(postPINData);
 
-                pin: pinValue
-            }).then ((res)=>{
-                navigate('/profile/managePIN/set-new')
-            })
-            .catch((err)=>{
-                setErrorMsg("You entered the wrong PIN")
-                // navigate('/profile')
-            })
-            console.log(errorMsg);
-
-        }
+    const continueChangePIN = () => {
+        dispatch(postPIN(pinValue, navigate, setErrorMsg))
+        // .then(res=> navigate('/profile/managePIN/set-new'))
+        // .catch(err => setErrorMsg("You entered the wrong PIN"))
+    }    
     
     return (
         <section class="trans-history w-lg-75 w-100 bg-white shadow-sm p-lg-5">

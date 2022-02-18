@@ -7,6 +7,8 @@ import Input from '../../base/Input'
 import Button from '../../base/Button'
 import '../../base/../../pages/Home/home.css'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../../../redux-state/action/register';
 
 const RightBox = () => {
 
@@ -15,6 +17,8 @@ const RightBox = () => {
         email: '',
         password: ''
     })
+    const dispatch = useDispatch()
+    const registerData = useSelector((state)=> state.Register)
 
     const navigate = useNavigate()
     const [isLoading, setLoading] = useState(false)
@@ -28,51 +32,41 @@ const RightBox = () => {
         console.log(form);
       }
 
-    const handleRegister = (e)=>{
-    e.preventDefault()
-    setLoading(true)
-    // axios.post('https://zwallet-dinda.herokuapp.com/users/register',{
-    axios.post('http://localhost:5000/users/register',{
-
-        email: form.email,
-        password: form.password,
-        name: form.name
-    })
-    .then((res)=>{
-        const result = res.data.data[0]
-        console.log(result);
-        localStorage.setItem('pins', JSON.stringify(result))
-        alert('register success')
-        setLoading(false)
-        navigate('/register/create-pin')
-    })
-    .catch((err)=>{
-        alert('register failed')
-        setLoading(false)
-        if(err.response.status === 403){
-            setErrorMsg(err.response.data.message)
-        }else{
-            setErrorMsg("Internal server error")
-        }
-        
-    })
-
-    }
-
     // const handleRegister = (e)=>{
-    //     e.preventDefault()
-    //     setLoading(true)
-    //     if (form.email !== '' && form.password !=='' && form.name !==''){
-    //         setLoading(false)
-    //         navigate('/login')
+    // e.preventDefault()
+    // setLoading(true)
+    // // axios.post('https://zwallet-dinda.herokuapp.com/users/register',{
+    // axios.post('http://localhost:5000/users/register',{
+
+    //     email: form.email,
+    //     password: form.password,
+    //     name: form.name
+    // })
+    // .then((res)=>{
+    //     const result = res.data.data[0]
+    //     console.log(result);
+    //     localStorage.setItem('pins', JSON.stringify(result))
+    //     alert('register success')
+    //     setLoading(false)
+    //     navigate('/register/create-pin')
+    // })
+    // .catch((err)=>{
+    //     alert('register failed')
+    //     setLoading(false)
+    //     if(err.response.status === 403){
+    //         setErrorMsg(err.response.data.message)
     //     }else{
-    //         setErrorMsg('Please fill all forms!')
+    //         setErrorMsg("Internal server error")
     //     }
+        
+    // })
+
     // }
 
-    const moveToLogin = ()=>{
-        navigate('/login')
+    const handleRegister = () => {
+        dispatch(register({navigate, form, setErrorMsg}))
     }
+
         return (
         <section className="box box-right p-5">
         <main className="box-right-wrapper d-flex flex-column justify-content-between mx-auto">
@@ -123,12 +117,12 @@ const RightBox = () => {
             </form>
 
             <Button 
-            isLoading={isLoading}
+            isLoading={registerData.loading}
             onClick={handleRegister}
             className="btn btn-secondary">
                 Sign Up</Button>
 
-            <p className='w-100 text-secondary text-center'>Already have an account? <span className='link' onClick={moveToLogin}>Log In</span></p>
+            <p className='w-100 text-secondary text-center'>Already have an account? <span className='link' onClick={()=>navigate('/login')}>Log In</span></p>
             {errorMsg && <h3 className="text-danger">{errorMsg}</h3>}
 
 
