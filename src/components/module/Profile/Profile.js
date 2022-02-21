@@ -8,15 +8,18 @@ import Arrow from './arrow-left.svg'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfile } from '../../../redux-state/action/profile';
+import { putPP } from '../../../redux-state/action/PP'
+
+import axios from 'axios'
 
 const ProfileMain = () => {
 
     const dispatch = useDispatch()
+    const user = JSON.parse(localStorage.getItem('user'))
     const profileData = useSelector((state)=> state.Profile)
     useEffect(()=>{
       dispatch(getProfile())
     }, [])
-
 
     const navigate = useNavigate()
     const handleLogout = () =>{
@@ -24,14 +27,38 @@ const ProfileMain = () => {
         navigate('/login')
     }
 
+    const [modalPP, setModalPP] = useState(false)
+    const [PP, setPP] = useState()
+    const handleModal = () => setModalPP(!modalPP)
+
+    const handlePP = (e) => {
+        e.preventDefault()
+        setPP(e.target.files[0])
+        console.log(PP);
+    }
+
+    const handleSetPP = (e) => {
+        e.preventDefault()
+        const PPData = new FormData()
+        PPData.append('profile_picture', PP)
+        dispatch(putPP({PPData, handleModal}))
+        // axios.put(`http://localhost:5000/users/profile-picture/${user.id}`, PPData)
+        // .then((res) => {
+        //     window.location.reload()
+        // }).catch((err)=>{
+        //     console.log(err.message);
+        // })
+    }
 
     return (
             <section class="trans-history w-lg-75 w-100 bg-white shadow-sm p-lg-3">               
                     <img class='d-block d-lg-none' src='back-icon.svg' alt=''/>
                     <div className='user-wrapper d-flex justify-content-center'>
-                    <img className= "user-pic " src={UserImage} alt="" />
+                    <img className= "user-pic " src={profileData.data.profile_picture? profileData.data.profile_picture : UserImage} alt="" />
                     </div>
-                    <div className="text-secondary-custom flex-direction-row d-flex mt-3">
+                    <div 
+                    className="text-secondary-custom flex-direction-row d-flex mt-3 edit-section"
+                    onClick={handleModal}>
                         <img className='note-pic' src={Note} alt="" />
                         <p className='m-0 ms-2'>Edit</p>
                         </div>
@@ -68,7 +95,33 @@ const ProfileMain = () => {
                     <br/>
                 </section>
                 </div>
+                {modalPP &&
+                 <main class="con container-fluid d-flex flex-column p-0 justify-content-between">
+        <div class="modal-pin bg-light w-25 h-50 p-3 m-3">
+            <div class="top-modal d-flex justify-content-between m-3">
+              <h4>Set Profile Picture</h4>
+              <h3 class="close-modal" onClick={handleModal}>x</h3>
+              </div>
+            <p class="text-secondary m-3 mb-5">Set a cool picture of you to your profile</p>
+            <div className='wrapper-pp-modal w-100 d-flex justify-content-center'>
+                <img className= "user-pic-modal my-auto" src={profileData.data.profile_picture? profileData.data.profile_picture : UserImage} alt="" />
+            </div>
+            <form
+            encType='multipart/form-data' 
+            className='wrapper-pp-modal w-100 d-flex justify-content-center pt-3'>
+                <input className='pp-input' type='file' onChange= {handlePP}/>
+            </form>
+            <div class="button-wrapper w-100 d-flex justify-content-end pt-3">
+                <button 
+                class='continue-button'
+                onClick={handleSetPP}
+                >Save Changes
+                </button>
+            </div>
 
+        </div>  
+      </main>
+       }
 
             </section>
     )

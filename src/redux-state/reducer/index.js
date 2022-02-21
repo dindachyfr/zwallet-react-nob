@@ -12,6 +12,8 @@ import TransactionByID from './transactionByID'
 import PutTransaction from './putTransaction'
 import PutPhone from './putPhone'
 import Register from './register'
+import Login from './login'
+import PP from './PP'
 
 const rootReducers = combineReducers({
     User,
@@ -26,7 +28,9 @@ const rootReducers = combineReducers({
     TransactionByID,
     PutTransaction,
     PutPhone,
-    Register
+    Register,
+    Login,
+    PP
 })
 
 export default rootReducers

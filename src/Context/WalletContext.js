@@ -18,7 +18,6 @@ const WalletContext = ({children}) => {
         .then((res)=>{
             const result = res.data.data[0]
             setWallet(result)
-            localStorage.setItem('wallet', JSON.stringify(result))
         })
         .catch((err)=>{
             console.log(err.response);

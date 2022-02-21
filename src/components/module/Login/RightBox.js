@@ -7,7 +7,8 @@ import MailIcon from './mail-icon.svg'
 import PadlockIcon from './padlock-icon.svg'
 import { useNavigate } from 'react-router-dom'
 import '../../base/../../pages/Home/home.css'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../../redux-state/action/login';
 
 const RightBoxLogin = () => {
     const [form, setForm] = useState({
@@ -17,6 +18,8 @@ const RightBoxLogin = () => {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const [errorMsg , setErrorMsg]= useState("")
+    const dispatch = useDispatch()
+    const loginData = useSelector((state)=> state.Login)
 
     const handleForm = (e)=>{
         setForm({
@@ -26,46 +29,38 @@ const RightBoxLogin = () => {
         console.log(form);
     }
 
-    const handleLogin = () =>{
-        setIsLoading(true)
-        // axios.post(`https://zwallet-dinda.herokuapp.com/users/login`,
-        axios.post(`http://localhost:5000/users/login`,
-        {
-        email: form.email,
-        password: form.password
-    })
-        .then((res)=>{
-            setIsLoading(false)
-            const result = res.data.data
-            const token = result.token
-            console.log(result);
-            localStorage.setItem('token', token)
-            localStorage.setItem('user', JSON.stringify(result))
-            navigate('/')
-        })
-        .catch((err)=>{
-            setIsLoading(false)
-            console.log(err.response)
-            if(err.response.status === 403){
-                setErrorMsg(err.response.data.message)
-            }else{
-                setErrorMsg('Internal server error, try again later')
-            }
-    
-        })
-    }
-
-    // const handleLogin = ()=>{
+    // const handleLogin = () =>{
     //     setIsLoading(true)
-    //     if (form.email === 'admin@admin.com' && form.password === '123456'){
+    //     // axios.post(`https://zwallet-dinda.herokuapp.com/users/login`,
+    //     axios.post(`http://localhost:5000/users/login`,
+    //     {
+    //     email: form.email,
+    //     password: form.password
+    // })
+    //     .then((res)=>{
     //         setIsLoading(false)
-    //         localStorage.setItem('auth', '1')
+    //         const result = res.data.data
+    //         const token = result.token
+    //         console.log(result);
+    //         localStorage.setItem('token', token)
+    //         localStorage.setItem('user', JSON.stringify(result))
     //         navigate('/')
-    //     }else{
+    //     })
+    //     .catch((err)=>{
     //         setIsLoading(false)
-    //         setErrorMsg('You entered the wrong email/password')
-    //     }
+    //         console.log(err.response)
+    //         if(err.response.status === 403){
+    //             setErrorMsg(err.response.data.message)
+    //         }else{
+    //             setErrorMsg('Internal server error, try again later')
+    //         }
+    
+    //     })
     // }
+
+    const handleLogin = () => {
+        dispatch(login({form, navigate, setErrorMsg}))
+    }
 
     const moveToRegister = ()=>{
         navigate('/register')
@@ -109,7 +104,7 @@ const RightBoxLogin = () => {
             <p className='link w-100 text-end text-secondary'>Forgot password?</p>
 
             <Button 
-            isLoading={isLoading}
+            isLoading={loginData.loading}
             onClick={handleLogin}
             className="btn btn-secondary">
                 Login</Button>

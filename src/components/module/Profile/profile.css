@@ -6,9 +6,28 @@
     width: 20px;
 }
 
-.user-pic {
+.user-pic, .user-pic-modal {
     margin-top: 4rem;
     width: 100px;
+    height: 100px;
+    border-radius: 25%;
+}
+
+/* .user-pic-modal {
+    margin-top: 4rem;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 25%;
+} */
+
+.user-pic-nav {
+    width: 52px;
+    height: 52px;
+    border-radius: 25%;
+}
+
+.edit-section{
+    cursor: pointer;
 }
 
 .text-secondary-custom {
@@ -24,3 +43,4 @@
     border-radius: 1rem;
     cursor: pointer;
 }
+
