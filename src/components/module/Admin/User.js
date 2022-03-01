@@ -1,29 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import Input from '../../base/Input'
-import './contactwallet.css'
-import Search from './search-icon.svg'
+import Search from '../ContactWallet/search-icon.svg'
 import UserImage from '../../../components/module/Navbar/NangIs-icon.svg'
-import ReactPaginate from 'react-paginate'
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../../redux-state/action/user';
+import { delUser } from '../../../redux-state/action/delUser';
+import Trash from '../ManagePhone2/trash.svg'
+import ReactPaginate from 'react-paginate'
 
 
-const ContactWallet = () => {
+const User = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const querySearch = searchParams.get("search");
-    const navigate = useNavigate()
+    // const [users, setUsers] = useState([]);
     const dispatch = useDispatch()
     const usersData = useSelector((state) => state.User)
-
+    // console.log(usersData);
     const [pageNumber, setPageNumber] = useState(0)
     const usersPerPage = 4
     const pagesVisited = pageNumber * usersPerPage
 
     const displayUsers = usersData.data.slice(pagesVisited, pagesVisited + usersPerPage).map((user) => {
         return (
-            <div class='recipient d-flex justify-content-between align-items-between shadow-sm'
-                onClick={() => navigate(`/transfer/${user.id}`)}>
+            <div class='recipient d-flex justify-content-between align-items-between shadow-sm pe-3'
+            >
                 <div class="recipient d-flex p-3">
                     <img src={UserImage} alt='' />
                     <div className='text-secondary ms-3'>
@@ -31,10 +32,13 @@ const ContactWallet = () => {
                         <h5>{user.phone_number}</h5>
                     </div>
                 </div>
+                <img src={Trash} alt=''
+                    onClick={() => handleDelUser(user.id)}
+                />
             </div>
         )
     })
-    // console.log(usersData);
+
     useEffect(() => {
         dispatch(getUser(querySearch))
     }, [querySearch])
@@ -46,16 +50,21 @@ const ContactWallet = () => {
         }
     }
 
+    const handleDelUser = (id) => {
+        dispatch(delUser({ id, querySearch }))
+    }
+
     const handlePageChange = ({ selected }) => {
         setPageNumber(selected)
     }
+
 
     return (
         <section className="trans-history-contactwallet w-lg-75 w-100 d-flex flex-column bg-white shadow-sm p-lg-3 flex-grow-3">
             <div className="history-upper d-flex flex-column px-5 py-lg-0 py-3">
                 <div className='d-flex'>
                     <img className='d-block d-lg-none' src='arrow-left-icon.svg' alt='' />
-                    <h3 className="text-secondary pt-lg-3 p-3 p-lg-0 title-history">Find Receiver</h3>
+                    <h3 className="text-secondary pt-lg-3 p-3 p-lg-0 title-history">Find User</h3>
                 </div>
                 <div className="history-input bg-secondary bg-opacity-25 p-2 d-flex">
                     <img src={Search} alt='' />
@@ -82,10 +91,11 @@ const ContactWallet = () => {
                     disabledClassName={"disabledPagination"}
                     activeClassName={"activePagination"}
                 />
+
             </div>
 
         </section>
     )
 }
 
-export default ContactWallet
+export default User

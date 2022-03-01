@@ -23,7 +23,7 @@ export const putPINErr = (message) => {
 export const putPIN = (pinValue, navigate, id) => {
     return async (dispatch) => {
         try{
-            const res = await axios.put(`http://localhost:5000/users/pin/${id}`, {
+            const res = await axios.put(`${process.env.REACT_APP_URL_BACKEND}/users/pin/${id}`, {
                         pin: pinValue
                     })
             const {data} = res

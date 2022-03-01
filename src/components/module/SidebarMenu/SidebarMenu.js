@@ -1,15 +1,16 @@
 import React from 'react'
 import '../../../pages/Home/home.css'
-import Logout from './logout-icon.png'
-import Transfer from './topup-icon.png'
-import TopUp from './topup-icon.png'
-import Menu from './dashboard-icon.png'
+import Logout from './log-out.svg'
+import Transfer from './arrow-up.svg'
+import TopUp from './plus.svg'
+import Menu from './grid.svg'
+import Admin from './user.svg'
 import { useNavigate } from 'react-router-dom'
 
 const SidebarMenu = () => {
 
     const navigate = useNavigate()
-    
+    const user = JSON.parse(localStorage.getItem('user'))
     const handleLogout = ()=>{
         localStorage.clear()
 
@@ -41,6 +42,15 @@ const SidebarMenu = () => {
                 <img src={TopUp} alt=''/>
                 <h4 className= "ms-5">Top Up</h4>
             </figure>
+
+            {
+                user.role === "admin" &&
+                <figure className='d-flex w-100 change-home'
+                onClick={() => navigate('/admin')}>
+                <img src={Admin} alt=''/>
+                <h4 className= "ms-5">Admin</h4>
+            </figure>
+            }
 
             <figure className='d-flex w-100 change-home' onClick={handleLogout}>
             <img src={Logout} alt=''/>

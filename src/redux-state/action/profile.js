@@ -27,7 +27,7 @@ export const getProfile = () => {
         dispatch(getProfileRequest())
             return axios({
                 method: 'GET',
-                url: `http://localhost:5000/users/user/profile`,
+                url: `${process.env.REACT_APP_URL_BACKEND}/users/user/profile`,
                 headers: {Authorization: `Bearer ${token}`}
             }).then((res) => {
                 const data = res.data?.data[0]

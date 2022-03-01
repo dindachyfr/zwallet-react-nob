@@ -26,7 +26,7 @@ export const getTransaction = (id) => {
         dispatch(getTransactionRequest())
             return axios({
                 method: 'GET',
-                url: `http://localhost:5000/transaction/${id}`,
+                url: `${process.env.REACT_APP_URL_BACKEND}/transaction/${id}`,
             }).then((res) => {
                 const data = res.data?.data[0]
                 dispatch(getTransactionRes(data))

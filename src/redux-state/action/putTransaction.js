@@ -26,7 +26,7 @@ export const putTransactionErr = (message) => {
 export const putTransaction = ({pinValue, navigate, setErrorMsg, transID}) => {
     return async (dispatch) => {
         try{
-            const res = await axios.put(`http://localhost:5000/transaction/transfer/confirm/${user.id}/${user.wallet_id}/${transID}`, {
+            const res = await axios.put(`${process.env.REACT_APP_URL_BACKEND}/transaction/transfer/confirm/${user.id}/${user.wallet_id}/${transID}`, {
                         pin: pinValue
                     })
             const {data} = res

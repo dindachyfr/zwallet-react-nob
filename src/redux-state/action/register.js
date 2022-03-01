@@ -23,7 +23,7 @@ export const registerErr = (message) => {
 export const register = ({form, navigate, setErrorMsg}) => {
     return async (dispatch) => {
         try{
-            const res = await axios.post(`http://localhost:5000/users/register`, form)
+            const res = await axios.post(`${process.env.REACT_APP_URL_BACKEND}/users/register`, form)
             const {data} = res
             const pin = data.data
             dispatch(registerRes(data))

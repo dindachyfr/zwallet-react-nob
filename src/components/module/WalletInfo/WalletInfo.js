@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfile } from '../../../redux-state/action/profile';
 import { getWallet } from '../../../redux-state/action/wallet'
-
+import socket from '../../../helper/socket'
 
 const WalletInfo = () => {
     const dispatch = useDispatch()

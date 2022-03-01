@@ -28,7 +28,7 @@ export const getUser = (querySearch) => {
         if(querySearch){
             return axios({
                 method: 'GET',
-                url: `http://localhost:5000/users?limit=4&filter=${querySearch}`,
+                url: `${process.env.REACT_APP_URL_BACKEND}/users?filter=${querySearch}`,
                 headers: {Authorization: `Bearer ${token}`}
             }).then((res) => {
                 const data = res.data?.data
@@ -41,7 +41,7 @@ export const getUser = (querySearch) => {
             }else{
                 return axios({
                     method: 'GET',
-                    url: `http://localhost:5000/users?limit=4`,
+                    url: `${process.env.REACT_APP_URL_BACKEND}/users`,
                     headers: {Authorization: `Bearer ${token}`}
                 }).then((res) => {
                     const data = res.data?.data

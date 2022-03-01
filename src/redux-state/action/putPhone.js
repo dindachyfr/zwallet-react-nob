@@ -25,7 +25,7 @@ export const putPhoneErr = (message) => {
 export const putPhone = ({phone, navigate}) => {
     return async (dispatch) => {
         try{
-            const res = await axios.put(`http://localhost:5000/users/phone/${user.id}`, {
+            const res = await axios.put(`${process.env.REACT_APP_URL_BACKEND}/users/phone/${user.id}`, {
                 phone_number: phone
                     })
             const {data} = res.data

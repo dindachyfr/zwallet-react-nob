@@ -27,7 +27,7 @@ export const getWallet = () => {
         dispatch(getWalletRequest())
             return axios({
                 method: 'GET',
-                url: `http://localhost:5000/user-wallet/${user.wallet_id}`,
+                url: `${process.env.REACT_APP_URL_BACKEND}/user-wallet/${user.wallet_id}`,
             }).then((res) => {
                 const data = res.data?.data[0]
                 dispatch(getWalletRes(data))

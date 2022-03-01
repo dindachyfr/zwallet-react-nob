@@ -26,7 +26,7 @@ export const putPPErr = (message) => {
 export const putPP = ({PPData, handleModal}) => {
     return async (dispatch) => {
         try{
-            const res = await axios.put(`http://localhost:5000/users/profile-picture/${user.id}`, PPData)
+            const res = await axios.put(`${process.env.REACT_APP_URL_BACKEND}/users/profile-picture/${user.id}`, PPData)
             const {data} = res.data
             dispatch(putPPRes(data))
             handleModal()

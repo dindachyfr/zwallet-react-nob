@@ -23,7 +23,7 @@ export const postTransferErr = (payload) => {
 export const postTransfer = ({amount, notes, navigate, setErrMsg, sender_wallet_id, receiver_wallet_id}) => {
     return async (dispatch) => {
         try{
-            const res = await axios.post(`http://localhost:5000/transaction/transfer`, {
+            const res = await axios.post(`${process.env.REACT_APP_URL_BACKEND}/transaction/transfer`, {
                 sender_wallet_id, 
                 receiver_wallet_id, 
                 amount, 

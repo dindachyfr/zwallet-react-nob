@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import UserImage from '../../../components/module/Navbar/NangIs-icon.svg'
 import { useNavigate } from 'react-router-dom'
 import './modal.css'
 import ReactCodeInput from 'react-code-input'
-import { walletContext } from '../../../Context/WalletContext'
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransaction } from '../../../redux-state/action/transactionByID';
 import { getWallet } from '../../../redux-state/action/wallet'
 import { putTransaction } from '../../../redux-state/action/putTransaction'
+import socket from '../../../helper/socket'
 
 const TransferConfMain = () => {
 
@@ -63,6 +63,7 @@ const TransferConfMain = () => {
     const receiptData = useSelector((state)=> state.TransactionByID)
     const walletData = useSelector((state) => state.Wallet)
     console.log(receiptData);
+
     useEffect(()=>{
       dispatch(getTransaction(transaction.data.insertId))
       dispatch(getWallet())
@@ -70,6 +71,10 @@ const TransferConfMain = () => {
 
     const handleConfirm = () => {
         dispatch(putTransaction({pinValue, navigate, setErrorMsg, transID}))
+        socket.emit("notif transaksi", {
+            amount: receiptData.data.amount, 
+            sender: receiptData.data.sender,
+        receiver: receiptData.data.receiver_wallet_id})
     }
 
     const [pinValue, setPinValue] = useState (0)

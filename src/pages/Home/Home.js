@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useRef } from 'react'
 import Footer from '../../components/module/Footer/Footer'
 import Navbar from '../../components/module/Navbar/Navbar'
 import SidebarMenu from '../../components/module/SidebarMenu/SidebarMenu'
@@ -6,8 +6,16 @@ import TransactionHistory from '../../components/module/TransactionHistory/Trans
 import TransactionInfo from '../../components/module/TransactionInfo/TransactionInfo'
 import WalletInfo from '../../components/module/WalletInfo/WalletInfo'
 import './home.css'
+import socket from '../../helper/socket'
 
 const Home = () => {
+    const user = JSON.parse(localStorage.getItem('user'))
+    const UID = user.wallet_id
+
+    useEffect(()=> {
+        socket.emit("wallet ID", UID)
+    },[])
+    
     return (
         <Fragment>
             <main className="con-home container-fluid d-flex flex-column bg-light p-0 justify-content-between">

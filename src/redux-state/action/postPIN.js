@@ -25,7 +25,7 @@ export const postPINErr = (message) => {
 export const postPIN = (pinValue, navigate, setErrorMsg) => {
     return async (dispatch) => {
         try{
-            const res = await axios.post(`http://localhost:5000/users/pinconfirm/${user.id}`, {
+            const res = await axios.post(`${process.env.REACT_APP_URL_BACKEND}/users/pinconfirm/${user.id}`, {
                         pin: pinValue
                     })
             const {data} = res

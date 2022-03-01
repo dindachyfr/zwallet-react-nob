@@ -27,7 +27,7 @@ export const getIncome = () => {
         dispatch(getIncomeRequest())
             return axios({
                 method: 'GET',
-                url: `http://localhost:5000/transaction/transfer/income/user/${user.wallet_id}`,
+                url: `${process.env.REACT_APP_URL_BACKEND}/transaction/transfer/income/user/${user.wallet_id}`,
             }).then((res) => {
                 const data = res.data?.data[0]
                 dispatch(getIncomeRes(data))

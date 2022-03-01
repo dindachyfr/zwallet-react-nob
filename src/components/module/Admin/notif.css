@@ -1,0 +1,10 @@
+.form-notif, .form-notif-1{
+    border-radius: 1.5rem;
+    border: 1px solid rgb(161, 158, 158);
+}
+
+.form-notif-1{
+    height: 8rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

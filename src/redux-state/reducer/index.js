@@ -14,6 +14,10 @@ import PutPhone from './putPhone'
 import Register from './register'
 import Login from './login'
 import PP from './PP'
+import NotifTransfer from './notifTransfer'
+import DelUser from './deluser'
+import PostNotif from './postNotif'
+import GetNotif from './getNotif'
 
 const rootReducers = combineReducers({
     User,
@@ -30,7 +34,11 @@ const rootReducers = combineReducers({
     PutPhone,
     Register,
     Login,
-    PP
+    PP,
+    NotifTransfer,
+    DelUser,
+    PostNotif,
+    GetNotif
 })
 
 export default rootReducers

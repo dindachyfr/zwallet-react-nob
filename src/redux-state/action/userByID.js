@@ -26,7 +26,7 @@ export const getUID = (id) => {
         dispatch(getUIDRequest())
             return axios({
                 method: 'GET',
-                url: `http://localhost:5000/users/${id}`,
+                url: `${process.env.REACT_APP_URL_BACKEND}/users/${id}`,
             }).then((res) => {
                 const data = res.data?.data[0]
                 dispatch(getUIDRes(data))
