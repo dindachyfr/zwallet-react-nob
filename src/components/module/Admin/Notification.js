@@ -40,7 +40,7 @@ const Notification = () => {
         formData.append("title", form.title)
         formData.append("message", form.message)
         formData.append("image", image)
-        // dispatch(postNotif({formData, navigate}))
+        dispatch(postNotif({formData, navigate}))
         socket.emit("notif admin", {
             title: form.title, 
             message: form.message, 

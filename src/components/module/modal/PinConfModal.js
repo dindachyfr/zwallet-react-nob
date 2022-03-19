@@ -14,6 +14,7 @@ const PinConfModal = () => {
             <div class="button-wrapper w-100 d-flex justify-content-end">
               <button class='continue-button'>Continue</button>
           </div>
+          h2
         </div>  
       </main>
       )

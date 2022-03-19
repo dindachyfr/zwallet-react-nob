@@ -121,6 +121,7 @@ const NotifModal = () => {
                     )
                 }
             </div>
+            
         </main>
     )
 }
