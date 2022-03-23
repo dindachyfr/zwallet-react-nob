@@ -8,6 +8,7 @@ import { getUser } from '../../../redux-state/action/user';
 import { delUser } from '../../../redux-state/action/delUser';
 import Trash from '../ManagePhone2/trash.svg'
 import ReactPaginate from 'react-paginate'
+import Modal from './Modal';
 
 
 const User = () => {
@@ -20,6 +21,13 @@ const User = () => {
     const [pageNumber, setPageNumber] = useState(0)
     const usersPerPage = 4
     const pagesVisited = pageNumber * usersPerPage
+    const [modal,setModal] = useState(false)
+    const [UID, setUID] = useState(0)
+    const handleModal = (id) => {
+        setModal(!modal)
+        setUID(id)
+    }
+    console.log(UID);
 
     const displayUsers = usersData.data.slice(pagesVisited, pagesVisited + usersPerPage).map((user) => {
         return (
@@ -33,7 +41,7 @@ const User = () => {
                     </div>
                 </div>
                 <img src={Trash} alt=''
-                    onClick={() => handleDelUser(user.id)}
+                    onClick={() => handleModal(user.id)}
                 />
             </div>
         )
@@ -52,6 +60,7 @@ const User = () => {
 
     const handleDelUser = (id) => {
         dispatch(delUser({ id, querySearch }))
+        setModal(false)
     }
 
     const handlePageChange = ({ selected }) => {
@@ -93,7 +102,7 @@ const User = () => {
                 />
 
             </div>
-
+            {modal && <Modal handleModal={handleModal} uid={UID} handleDelUser={handleDelUser}/>}
         </section>
     )
 }

@@ -85,6 +85,7 @@ const Notification = () => {
                 </p>
                 <Input
                 type="file"
+                className="w-25 m-3"
                 onChange= {handleImage}
                 />
             </form>
