@@ -14,7 +14,7 @@ const IncomeContext = ({children}) => {
     useEffect (()=>{
         if(user){
         // axios.get(`https://zwallet-dinda.herokuapp.com/transaction/transfer/income/user/${user.wallet_id}`)
-        axios.get(`http://localhost:5000/transaction/transfer/income/user/${user.wallet_id}`)
+        axios.get(`${process.env.REACT_APP_URL_BACKEND}/transaction/transfer/income/user/${user.wallet_id}`)
         .then((res)=>{
             const result = res.data.data[0]
             setIncome(result)

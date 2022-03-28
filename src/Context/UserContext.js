@@ -19,7 +19,7 @@ const UserContext = ({children}) => {
     useEffect (()=>{
         if(user){
         // axios.get(`https://zwallet-dinda.herokuapp.com/users/${user.id}`)
-        axios.get(`http://localhost:5000/users/${user.id}`)
+        axios.get(`${process.env.REACT_APP_URL_BACKEND}/users/${user.id}`)
         .then((res)=>{
             const result = res.data.data[0]
             setProfile(result)
