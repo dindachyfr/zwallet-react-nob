@@ -70,3 +70,17 @@ input.form-control {
     border-bottom: solid 1px #e8e6e6;
 
 }
+
+.btn-mobile{
+    background: #EAEDFF;
+    padding: 1rem
+}
+
+@media screen and (min-width: 240px) and (max-width: 968px) {
+    .balance-box-home{
+        height: 10rem!important;
+ }
+ /* .balance-right-home{
+     align-items: center;
+ } */
+}

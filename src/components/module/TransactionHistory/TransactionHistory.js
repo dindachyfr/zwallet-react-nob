@@ -32,12 +32,12 @@ const TransactionHistory = () => {
     }
 
     return (
-        <section className="trans-history d-flex flex-column bg-white shadow-sm p-lg-3 flex-grow-1 ms-lg-3">
-            <div className="history-upper d-flex justify-content-between align-items-center px-5 h-25">
+        <section className="trans-history d-flex flex-column bg-white shadow-sm p-lg-3 mt-lg-0 mt-5 flex-grow-1 ms-lg-3">
+            <div className="history-upper d-flex justify-content-between align-items-center px-lg-5 px-3 h-25">
                 <h5 className="text-secondary">Transaction History</h5>
                 <h5 className='lead link' onClick={moveToHistory}>See all</h5>
                 </div> 
-            <div className="history-lower d-flex flex-column justify-content-between px-lg-5 h-75">
+            <div className="history-lower d-flex flex-column justify-content-between px-3 px-lg-5 h-75">
                 {transactions.map((transaction)=>{
                     return(
                         <div className='recipient d-flex justify-content-between align-items-center'>

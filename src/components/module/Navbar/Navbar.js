@@ -21,13 +21,17 @@ const Navbar = () => {
 
     return (
         <nav className="nav-bar-home bg-white d-flex shadow-sm">
-            <div className="nav-wrapper-home w-100 mx-5 d-flex align-items-center">
+            <div className="nav-wrapper-home w-100 mx-lg-5 mx-3 d-flex justify-content-between align-items-center">
                 <h1 className="nav-left text-primary d-none d-lg-block w-50 justify-content-start">Zwallet</h1>
                 <div
                     className="nav-right d-flex justify-content-lg-end justify-content-between w-100 w-lg-50 align-items-between">
-                    <div className='wrapper-navbar-pic mt-2'
+                    <div className='wrapper-navbar-pic mt-2 d-flex d-lg-block align-items-center'
                         onClick={() => navigate('/profile')}>
                         <img className="user-pic-nav" src={profileData.data.profile_picture ? profileData.data.profile_picture : UserImage} alt="" />
+                        <div className="ms-3 d-flex flex-column">
+                            <h4 className="d-lg-none d-block mb-0 fw-light">Hello,</h4>
+                            <h4 className="fw-bold d-lg-none d-block">{profileData.data.name}</h4>
+                        </div>
                     </div>
                     <div className='d-none d-lg-block text-secondary mx-3'>
                         <h4>{profileData.data.name}</h4>

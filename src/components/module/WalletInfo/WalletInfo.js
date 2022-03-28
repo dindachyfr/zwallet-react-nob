@@ -12,43 +12,54 @@ import socket from '../../../helper/socket'
 
 const WalletInfo = () => {
     const dispatch = useDispatch()
-    const profileData = useSelector((state)=> state.Profile)
+    const profileData = useSelector((state) => state.Profile)
     const walletData = useSelector((state) => state.Wallet)
-    useEffect(()=>{
-      dispatch(getProfile())
-      dispatch(getWallet())
+    useEffect(() => {
+        dispatch(getProfile())
+        dispatch(getWallet())
     }, [])
 
 
     const navigate = useNavigate()
 
-    const moveToTransfer = ()=>{
+    const moveToTransfer = () => {
         navigate('/transfer')
     }
 
     return (
         <section className="balance-box-home shadow-sm h-25">
-        <div className="wrapper-balance-home d-block d-lg-flex p-3 justify-content-between w-100">
-            <div className="balance-left-home d-lg-flex d-none flex-column justify-content-between text-white">
-                <h3>Balance</h3>
-                <h1>IDR {walletData.data.balance}</h1>
-                <h3>{profileData.data.phone_number}</h3>
-            </div>
+            <div className="wrapper-balance-home d-block d-lg-flex mx-0 mx-3 p-3 justify-content-between w-100">
+                <div className="balance-left-home d-flex flex-column justify-content-between text-white">
+                    <h3>Balance</h3>
+                    <h1>IDR {walletData.data.balance}</h1>
+                    <h3>{profileData.data.phone_number}</h3>
+                </div>
 
-            <div className="balance-right-home d-flex flex-lg-column align-items-center justify-content-between text-white pe-lg-5 pb-3">
-                <Button type="button" className="btn btn-outline-lg-light btn-outline-home ms-lg-0 p-3 mb-lg-2" onClick={moveToTransfer}>
-                    <img src={Transfer} alt=''/>
+                <div className="balance-right-home d-lg-flex d-none flex-lg-column align-items-center justify-content-between text-white pe-lg-5 pb-3">
+                    <Button type="button" className="btn btn-outline-lg-light btn-outline-home ms-lg-0 p-3 mb-lg-2" onClick={moveToTransfer}>
+                        <img src={Transfer} alt='' />
+                        Transfer
+                    </Button>
+                    <Button type="button" className="btn ms-lg-0 ms-1 btn-outline-home p-3">
+                        <img src={TopUp} alt='' />
+                        Top Up
+                    </Button>
+
+                </div>
+            </div>
+            <div className="d-lg-none d-flex w-100 p-3 my-3 justify-content-between">
+                <Button type="button" className="btn btn-outline-lg-light btn-mobile ms-lg-0 p-3 mb-lg-2" onClick={moveToTransfer}>
+                    <img src={Transfer} alt='' />
                     Transfer
                 </Button>
-                <Button type="button" className="btn ms-lg-0 ms-1 btn-outline-home p-3">
-                    <img src={TopUp} alt=''/>
+                <Button type="button" className="btn ms-lg-0 ms-1 btn-mobile p-3">
+                    <img src={TopUp} alt='' />
                     Top Up
                 </Button>
 
             </div>
-        </div>    
-    </section>
-)
+        </section>
+    )
 }
 
 export default WalletInfo

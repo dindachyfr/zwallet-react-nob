@@ -28,3 +28,11 @@
     height: 48px;
     border-radius: 20%
 }
+
+@media screen and (min-width: 240px) and (max-width: 968px) {
+    .modal-notif{
+        width: 20rem;
+        height: 35rem;
+    }
+
+}
