@@ -90,7 +90,7 @@ const SidebarMenu = () => {
                 <h4 className= "ms-5">Transfer</h4>
             </figure>
 
-            <figure className='d-flex w-100 change-home' onClick={()=>navigate("/topup")}>
+            <figure className={topup? 'd-flex w-100 change-home2' : 'd-flex w-100 change-home'} onClick={()=>navigate("/topup")}>
                 <img src={TopUp} alt=''/>
                 <h4 className= "ms-5">Top Up</h4>
             </figure>
