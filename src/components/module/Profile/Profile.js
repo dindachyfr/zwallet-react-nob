@@ -106,7 +106,7 @@ const ProfileMain = () => {
             {modal && <LogoutModal handleModal={handleModal1} handleLogout={handleLogout} />}
             {modalPP &&
                 <main class="con container-fluid d-flex flex-column p-0 justify-content-between">
-                    <div class="modal-pin bg-light w-25 h-50 p-3 m-3">
+                    <div class="modal-pin-2 bg-light w-25 h-50 p-3 m-3">
                         <div class="top-modal d-flex justify-content-between m-3">
                             <h4>Set Profile Picture</h4>
                             <h3 class="close-modal" onClick={handleModal}>x</h3>

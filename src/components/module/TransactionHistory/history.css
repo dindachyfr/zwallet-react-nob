@@ -44,8 +44,16 @@
 
     .modal-pin{
         width: 75%!important;
-        left: 12.5vw!important
+        left: 12.5vw!important;
+        height: 30%!important;
     }
+
+    .modal-pin-2 {
+        width: 75%!important;
+        left: 12.5vw!important;
+        height: 49%!important;
+    }
+    
 
     .card-profile{
         width: 75%!important;
