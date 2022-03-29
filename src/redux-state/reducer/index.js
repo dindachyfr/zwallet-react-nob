@@ -18,6 +18,7 @@ import NotifTransfer from './notifTransfer'
 import DelUser from './deluser'
 import PostNotif from './postNotif'
 import GetNotif from './getNotif'
+import Topup from './topup'
 
 const rootReducers = combineReducers({
     User,
@@ -38,7 +39,8 @@ const rootReducers = combineReducers({
     NotifTransfer,
     DelUser,
     PostNotif,
-    GetNotif
+    GetNotif,
+    Topup
 })
 
 export default rootReducers

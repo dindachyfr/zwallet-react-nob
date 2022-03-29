@@ -36,11 +36,13 @@ const WalletInfo = () => {
                 </div>
 
                 <div className="balance-right-home d-lg-flex d-none flex-lg-column align-items-center justify-content-between text-white pe-lg-5 pb-3">
-                    <Button type="button" className="btn btn-outline-lg-light btn-outline-home ms-lg-0 p-3 mb-lg-2" onClick={moveToTransfer}>
+                    <Button type="button" className="btn btn-outline-lg-light btn-outline-home ms-lg-0 p-3 mb-lg-2" 
+                    onClick={moveToTransfer}>
                         <img src={Transfer} alt='' />
                         Transfer
                     </Button>
-                    <Button type="button" className="btn ms-lg-0 ms-1 btn-outline-home p-3">
+                    <Button type="button" className="btn ms-lg-0 ms-1 btn-outline-home p-3"
+                    onClick={()=>navigate("/topup")}>
                         <img src={TopUp} alt='' />
                         Top Up
                     </Button>
@@ -52,7 +54,8 @@ const WalletInfo = () => {
                     <img src={Transfer} alt='' />
                     Transfer
                 </Button>
-                <Button type="button" className="btn ms-lg-0 ms-1 btn-mobile p-3">
+                <Button type="button" className="btn ms-lg-0 ms-1 btn-mobile p-3"
+                onClick={()=>navigate("/topup")}>
                     <img src={TopUp} alt='' />
                     Top Up
                 </Button>

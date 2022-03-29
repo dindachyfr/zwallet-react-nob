@@ -55,7 +55,7 @@ const TransHistory = () => {
                 </div>
 
                 <div class="history-lower h-100 d-flex flex-column justify-content-evenly px-lg-5 pt-3 pt-lg-0">
-                    <h4 class="text-secondary ps-lg-0 ps-3">Within This Week</h4>
+                    {/* <h4 class="text-secondary ps-lg-0 ps-3">Within This Week</h4> */}
                     {displayHistories}
                     <ReactPaginate
                         previousLabel={"Previous"}

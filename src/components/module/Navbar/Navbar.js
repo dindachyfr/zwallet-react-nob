@@ -34,8 +34,8 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className='d-none d-lg-block text-secondary mx-3'>
-                        <h4>{profileData.data.name}</h4>
-                        <h4>{profileData.data.phone_number}</h4>
+                        <h5>{profileData.data.name}</h5>
+                        <h5>{profileData.data.phone_number}</h5>
                     </div>
                     {/* <div className="d-block d-lg-none text-secondary mx-3">
                         <h4>Balance</h4>

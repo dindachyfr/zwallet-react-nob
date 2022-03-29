@@ -20,6 +20,7 @@ import ManagePhonez from './pages/ManagePhone.js/ManagePhone2';
 import Admin from './pages/Admin/Admin';
 import User from './pages/User/User';
 import Notification from './pages/Notification/Notification';
+import Topup from './pages/Topup';
 
 const App = () => {
 
@@ -118,6 +119,12 @@ const App = () => {
 <Route path="admin/notification" element={
       <RequireAuth>
         <Notification/>
+      </RequireAuth>
+}/>
+
+<Route path="topup" element={
+      <RequireAuth>
+        <Topup/>
       </RequireAuth>
 }/>
 

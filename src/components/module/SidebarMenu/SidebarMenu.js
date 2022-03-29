@@ -65,6 +65,13 @@ const SidebarMenu = () => {
             setTopup(false)
             setHome(false)
         }
+        if(pathname.includes("/topup")){
+            setTransfer(false)
+            setAdmin(false)
+            setTopup(true)
+            setHome(false)
+        }
+
     }
     useEffect(()=>{
         Jalan()
@@ -83,7 +90,7 @@ const SidebarMenu = () => {
                 <h4 className= "ms-5">Transfer</h4>
             </figure>
 
-            <figure className='d-flex w-100 change-home'>
+            <figure className='d-flex w-100 change-home' onClick={()=>navigate("/topup")}>
                 <img src={TopUp} alt=''/>
                 <h4 className= "ms-5">Top Up</h4>
             </figure>
