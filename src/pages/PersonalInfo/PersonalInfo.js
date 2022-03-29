@@ -10,7 +10,7 @@ const PersonalInfo = () => {
     return (
         <main className="con-home container-fluid d-flex flex-column bg-light p-0 justify-content-between">
         <Navbar/>  
-        <main class="wrapper-content-home d-flex my-3 mx-lg-5 flex-fill">
+        <main class="wrapper-content-home d-flex my-lg-3 mx-lg-5 flex-fill">
         <div class="container-content-home h-100 w-100 d-flex">
             <SidebarMenu/>
             <PersonalInfo2/>                        

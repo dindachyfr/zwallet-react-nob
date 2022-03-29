@@ -7,6 +7,7 @@ import TransactionInfo from '../../components/module/TransactionInfo/Transaction
 import WalletInfo from '../../components/module/WalletInfo/WalletInfo'
 import './home.css'
 import socket from '../../helper/socket'
+import NavbarMobile from '../../components/module/Navbar/NavbarMobile'
 
 const Home = () => {
     const user = JSON.parse(localStorage.getItem('user'))
@@ -19,7 +20,8 @@ const Home = () => {
     return (
         <Fragment>
             <main className="con-home container-fluid d-flex flex-column bg-light p-0 justify-content-between">
-                <Navbar/>  
+                <Navbar/> 
+                <NavbarMobile/> 
                 <main class="wrapper-content-home d-flex my-3 mx-lg-5 flex-fill">
                 <div class="container-content-home h-100 w-100 d-flex">
                     <SidebarMenu/>

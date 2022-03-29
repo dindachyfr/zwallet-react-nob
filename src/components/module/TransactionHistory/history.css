@@ -1,0 +1,68 @@
+.text-manage{
+    color:#6379F4
+}
+
+@media screen and (min-width: 240px) and (max-width: 968px) {
+    .history-upper-h, .history-upper-h2{
+        background-color: #6379F4;
+        height: 10rem;
+        border-bottom-right-radius: 1.5rem;
+        border-bottom-left-radius: 1.5rem;
+    }
+    .history-upper-h2{
+        height: 12rem;
+    }
+    .title-history{
+        color: #ffffff!important;
+    }
+    .history-input{
+        background-color: #ffffff!important;
+        opacity: 1.0!important;
+    }
+    input.bg-transparent.ms-3.border-0.text-secondary {
+        width: 32vw!important;
+        outline: none;
+    }
+    .input-notes {
+        margin-top: 16vh!important;
+        width: 57vw!important;
+    }
+
+    .inner{
+        width: 45%;
+    }
+    .inner2{
+        width: 100%;
+    }
+    .history-lower-h{
+        height: 60%!important;
+    }
+
+    .button-h{
+        width: 100%;
+    }
+
+    .modal-pin{
+        width: 75%!important;
+        left: 12.5vw!important
+    }
+
+    .card-profile{
+        width: 75%!important;
+    }
+
+    .user-pic{
+        margin-top: 1rem!important;
+    }
+
+    .texttt{
+        width: 100%!important;
+    }
+
+    .react-code-input {
+        width: 95%;
+        display: flex!important;
+        justify-content: space-between;
+        margin: 0 auto;
+    }
+}

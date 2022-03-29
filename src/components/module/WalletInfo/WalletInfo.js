@@ -28,7 +28,7 @@ const WalletInfo = () => {
 
     return (
         <section className="balance-box-home shadow-sm h-25">
-            <div className="wrapper-balance-home d-block d-lg-flex mx-0 mx-3 p-3 justify-content-between w-100">
+            <div className="wrapper-balance-home d-block d-lg-flex mx-0 mx-lg-3 mx-0 p-3 justify-content-between w-100">
                 <div className="balance-left-home d-flex flex-column justify-content-between text-white">
                     <h3>Balance</h3>
                     <h1>IDR {walletData.data.balance}</h1>

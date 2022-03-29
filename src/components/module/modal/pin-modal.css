@@ -14,7 +14,20 @@
     left: 37.5vw;
 }
 
-.continue-button {
+.modal-pin-2 {
+    position: fixed;
+    border-radius: 2rem;
+    top: 25vh;
+    left: 37.5vw;
+    height: 30vh!important;
+}
+
+.modal-delUser{
+    width: 25%;
+    height: 25%;
+}
+
+.continue-button, .continue-button2 {
     border: 0.5px solid #6379F4;
     background: #6379F4;
     box-shadow: 0px 6px 75px rgb(100 87 87 / 5%);

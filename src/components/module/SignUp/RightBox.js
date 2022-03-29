@@ -12,13 +12,13 @@ import { register } from '../../../redux-state/action/register';
 
 const RightBox = () => {
 
-    const [form,setForm] = useState({
+    const [form, setForm] = useState({
         name: '',
         email: '',
         password: ''
     })
     const dispatch = useDispatch()
-    const registerData = useSelector((state)=> state.Register)
+    const registerData = useSelector((state) => state.Register)
 
     const navigate = useNavigate()
     const [isLoading, setLoading] = useState(false)
@@ -26,11 +26,11 @@ const RightBox = () => {
 
     const handleForm = (e) => {
         setForm({
-          ...form,
-          [e.target.name]: e.target.value,
+            ...form,
+            [e.target.name]: e.target.value,
         })
         console.log(form);
-      }
+    }
 
     // const handleRegister = (e)=>{
     // e.preventDefault()
@@ -58,77 +58,78 @@ const RightBox = () => {
     //     }else{
     //         setErrorMsg("Internal server error")
     //     }
-        
+
     // })
 
     // }
 
     const handleRegister = () => {
-        dispatch(register({navigate, form, setErrorMsg}))
+        dispatch(register({ navigate, form, setErrorMsg }))
     }
 
-        return (
+    return (
         <section className="box box-right p-5">
-        <main className="box-right-wrapper d-flex flex-column justify-content-between mx-auto">
-            <h2 className="text-center w-100 text-secondary d-block d-lg-none">Sign Up</h2>
-            <h2 className="text-secondary w-100 d-none d-lg-block">Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</h2>
-            <p className="text-secondary w-100 text-center d-block d-lg-none">Create your own account.</p>
-            <p className="text-secondary w-100 d-none d-lg-block">Transfering money is eassier than ever, you can access Zwallet wherever you are. Desktop, laptop, mobile phone?
-                we cover all of that for you!</p>
+            <main className="box-right-wrapper d-flex flex-column justify-content-between mx-auto">
+                <h2 className="text-center w-100 text-secondary d-block d-lg-none">Sign Up</h2>
+                <h2 className="text-secondary w-100 d-none d-lg-block">Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</h2>
+                <p className="text-secondary w-100 text-center d-block d-lg-none">Create your own account.</p>
+                <p className="text-secondary w-100 d-none d-lg-block">Transfering money is eassier than ever, you can access Zwallet wherever you are. Desktop, laptop, mobile phone?
+                    we cover all of that for you!</p>
 
-            <form className="input-group flex-nowrap">
-                <span className="input-group-text" id="addon-wrapping"><img src={UserIcon} alt=''/></span>
-                <Input 
-                name="name" 
-                value={form.name}
-                onChange={handleForm}
-                type="text" 
-                className="form-control" 
-                placeholder="Enter your name" 
-                aria-describedby="addon-wrapping"
-                />
-            </form>
-
-
-            <form className="input-group flex-nowrap">
-                <span className="input-group-text" id="addon-wrapping"><img src={MailIcon} alt=''/></span>
-                <Input 
-                name="email" 
-                value={form.email}
-                onChange={handleForm}                
-                type="text" 
-                className="form-control" 
-                placeholder="Enter your email" 
-                aria-describedby="addon-wrapping"
-                />
-            </form>
-
-            <form className="input-group flex-nowrap">
-                <span className="input-group-text" id="addon-wrapping"><img src={PadlockIcon} alt=''/></span>
-                <Input 
-                name="password" 
-                value={form.password}
-                onChange={handleForm}                                
-                type="password" 
-                className="form-control" 
-                placeholder="Enter your password" 
-                aria-describedby="addon-wrapping"
-                />
-            </form>
-
-            <Button 
-            isLoading={registerData.loading}
-            onClick={handleRegister}
-            className="btn btn-secondary">
-                Sign Up</Button>
-
-            <p className='w-100 text-secondary text-center'>Already have an account? <span className='link' onClick={()=>navigate('/login')}>Log In</span></p>
-            {errorMsg && <h3 className="text-danger">{errorMsg}</h3>}
+                <form className="input-group flex-nowrap">
+                    <span className="input-group-text" id="addon-wrapping"><img src={UserIcon} alt='' /></span>
+                    <Input
+                        name="name"
+                        value={form.name}
+                        onChange={handleForm}
+                        type="text"
+                        className="form-control"
+                        placeholder="Enter your name"
+                        aria-describedby="addon-wrapping"
+                    />
+                </form>
 
 
-        </main>           
-    </section>
-)
+                <form className="input-group flex-nowrap">
+                    <span className="input-group-text" id="addon-wrapping"><img src={MailIcon} alt='' /></span>
+                    <Input
+                        name="email"
+                        value={form.email}
+                        onChange={handleForm}
+                        type="text"
+                        className="form-control"
+                        placeholder="Enter your email"
+                        aria-describedby="addon-wrapping"
+                    />
+                </form>
+
+                <form className="input-group flex-nowrap">
+                    <span className="input-group-text" id="addon-wrapping"><img src={PadlockIcon} alt='' /></span>
+                    <Input
+                        name="password"
+                        value={form.password}
+                        onChange={handleForm}
+                        type="password"
+                        className="form-control"
+                        placeholder="Enter your password"
+                        aria-describedby="addon-wrapping"
+                    />
+                </form>
+
+                <Button
+                    isLoading={registerData.loading}
+                    onClick={handleRegister}
+                    disabled={!form.email || form.password.length < 6 || !form.name }
+                    className="btn btn-login pointer"
+                >
+                    Sign Up</Button>
+                <p className='w-100 text-secondary text-center'>Already have an account? <span className='link' onClick={() => navigate('/login')}>Log In</span></p>
+                {errorMsg && <h3 className="text-danger">{errorMsg}</h3>}
+
+
+            </main>
+        </section>
+    )
 }
 
 export default RightBox

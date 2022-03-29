@@ -9,8 +9,8 @@
 }
 
 .upper-modal{
-    height: 32.5%;
-    overflow-y: auto;
+        height: 37.5%;
+        overflow-y: auto;
 }
 
 .recipient-modal {
@@ -33,6 +33,7 @@
     .modal-notif{
         width: 20rem;
         height: 35rem;
+        z-index: 5;
     }
 
 }

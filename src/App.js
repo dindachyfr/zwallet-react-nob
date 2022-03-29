@@ -23,9 +23,9 @@ import Notification from './pages/Notification/Notification';
 
 const App = () => {
 
-  useEffect(()=> {
-    const socket = io("http://localhost:5000")
-  }, [])
+  // useEffect(()=> {
+  //   const socket = io("http://localhost:5000")
+  // }, [])
   return (
     <BrowserRouter>
     <Routes>

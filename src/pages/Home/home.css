@@ -1,6 +1,8 @@
-.con-home{
+.con-home {
     height: 100vh;
     width: 100vw;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .nav-bar-home{
@@ -18,13 +20,20 @@
 }
 
 .footer-home{
-    height: 10%;
+    height: 9%;
     background-color: #6379F4;
 }
 
 .change-home{
     border-left: solid 3px transparent;
     transition: .5s;
+}
+
+
+.change-home2{
+    border-left: solid 3px #6474af;
+    cursor: pointer;
+    color: #6379F4;
 }
 
 .change-home:hover{
@@ -76,10 +85,37 @@ input.form-control {
     padding: 1rem
 }
 
+.pointer{
+    cursor: pointer;
+}
+
+.btn-login{
+    padding: 1rem 3rem;
+    background-color: #6379F4;
+    color: white;
+}
+
 @media screen and (min-width: 240px) and (max-width: 968px) {
     .balance-box-home{
         height: 10rem!important;
  }
+ .wrapper-content-lower-home{
+     height: 80%!important;
+ }
+ .trans-history{
+     background-color: transparent!important;
+     border-radius: 0;
+     box-shadow: none!important;
+ }
+
+ .btn-mobile{
+        z-index: 3;
+        border-radius: 1rem;
+}
+ .recipient {
+    background-color: #ffffff!important;
+}
+
  /* .balance-right-home{
      align-items: center;
  } */

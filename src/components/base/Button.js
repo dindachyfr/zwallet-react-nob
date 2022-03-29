@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Button = ({isLoading, children, ...props}) => {
+const Button = ({isLoading, disabled, children, ...props}) => {
     return (
-        <button disabled={isLoading ? true : false} {...props}>{isLoading ? 'Loading...': children}</button>
+        <button disabled={disabled || isLoading ? true : false} {...props}>{isLoading ? 'Loading...': children}</button>
     )
 }
 

@@ -40,7 +40,7 @@ const User = () => {
                         <h5>{user.phone_number}</h5>
                     </div>
                 </div>
-                <img src={Trash} alt=''
+                <img src={Trash} className='pointer' alt=''
                     onClick={() => handleModal(user.id)}
                 />
             </div>

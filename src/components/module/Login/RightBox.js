@@ -105,8 +105,10 @@ const RightBoxLogin = () => {
 
             <Button 
             isLoading={loginData.loading}
+            disabled={!form.email || (form.password.length<6)}
             onClick={handleLogin}
-            className="btn btn-secondary">
+            className="btn btn-login pointer"
+            >
                 Login</Button>
 
             <p className='w-100 text-secondary text-center'>Dont have an account? <span className='link' onClick={moveToRegister}>Sign Up</span></p>
