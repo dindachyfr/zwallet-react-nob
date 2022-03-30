@@ -21,6 +21,7 @@ import Admin from './pages/Admin/Admin';
 import User from './pages/User/User';
 import Notification from './pages/Notification/Notification';
 import Topup from './pages/Topup';
+import ChangePW from './pages/ChangePW';
 
 const App = () => {
 
@@ -125,6 +126,12 @@ const App = () => {
 <Route path="topup" element={
       <RequireAuth>
         <Topup/>
+      </RequireAuth>
+}/>
+
+<Route path="profile/change-password" element={
+      <RequireAuth>
+        <ChangePW/>
       </RequireAuth>
 }/>
 

@@ -19,6 +19,7 @@ import DelUser from './deluser'
 import PostNotif from './postNotif'
 import GetNotif from './getNotif'
 import Topup from './topup'
+import PutPW from './putPW'
 
 const rootReducers = combineReducers({
     User,
@@ -40,7 +41,8 @@ const rootReducers = combineReducers({
     DelUser,
     PostNotif,
     GetNotif,
-    Topup
+    Topup,
+    PutPW
 })
 
 export default rootReducers

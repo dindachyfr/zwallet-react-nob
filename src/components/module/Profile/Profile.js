@@ -82,7 +82,8 @@ const ProfileMain = () => {
             </div>
 
             <div className='w-100 d-flex justify-content-center mt-4'>
-                <section className='d-flex card-profile w-50 justify-content-between py-3 p-3'>
+                <section className='d-flex card-profile w-50 justify-content-between py-3 p-3'
+                onClick={()=>navigate("/profile/change-password")}>
                     <h4>Change Password</h4>
                     <img src={Arrow} alt="" />
                 </section>

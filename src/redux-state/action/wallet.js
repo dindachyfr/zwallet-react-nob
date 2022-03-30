@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const user = JSON.parse(localStorage.getItem('user'))
+const user = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('user'))
 
 export const getWalletRequest = () => {
     return {

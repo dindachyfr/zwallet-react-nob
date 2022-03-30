@@ -20,7 +20,7 @@
 }
 
 .footer-home{
-    height: 9%;
+    height: 8%;
     background-color: #6379F4;
 }
 
@@ -67,7 +67,7 @@ a{
     margin: 0 auto;
 }
 
-span#addon-wrapping {
+span#addon-wrapping, #wrapping2 {
     background: transparent;
     border: none;
     border-bottom: solid 1px #e8e6e6;
