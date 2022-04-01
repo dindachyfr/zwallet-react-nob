@@ -23,7 +23,7 @@ const ChangePW = () => {
         setForm({...form, [e.target.name] : e.target.value})
     }
     const handleChangePW = () => {
-        // dispatch(putPW({form, id: user.id, navigate, setErrMSG, handleModal}))
+        dispatch(putPW({form, id: user.id, navigate, setErrMSG, handleModal}))
     }
     const handleModal = () => setModal(!modal)
     return (
