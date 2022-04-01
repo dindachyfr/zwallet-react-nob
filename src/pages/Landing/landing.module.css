@@ -1,0 +1,70 @@
+/* .con{
+    width: 100vw;
+    overflow-x: hidden;
+} */
+
+.textBlue{
+    color: #6379F4
+}
+
+.buttonLog{
+    border-radius: .75rem;
+    border: solid 3px #6379F4;
+}
+
+.buttonRegs{
+    border-radius: .75rem;
+    background-color: #6379F4;
+    border: solid 3px #6379F4;
+
+}
+
+.wrapperNavText{
+    height: 50vh;
+}
+
+.con2{
+    background-color: #473AD10F;
+}
+
+.Card{
+    max-width: 25rem;
+    border-radius: 1rem;
+}
+
+.textNeutral{
+    display: block!important;
+}
+
+.wrapperTextL3{
+    margin-top: 5rem;
+    height: 60vh;
+}
+
+.fearureCrad{
+    border-radius: 1rem;
+}
+
+.conFooter{
+    background-color: #6379F4;
+    height: 40vh;
+}
+
+@media screen and (min-width: 240px) and (max-width: 968px) {
+    .rwrappe{
+        width: 100%!important;
+    }
+    .wrapperTextL3{
+        margin-top: 0rem;
+    }
+
+    .conFooter{
+        height: 10vh;
+    }
+    
+}
+@media screen and (min-width: 969px) and (max-width: 1050px) {
+    .wrapperNavText{
+    height: 100vh;
+}
+}

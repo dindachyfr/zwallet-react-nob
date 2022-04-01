@@ -22,6 +22,7 @@ import User from './pages/User/User';
 import Notification from './pages/Notification/Notification';
 import Topup from './pages/Topup';
 import ChangePW from './pages/ChangePW';
+import Landing from './pages/Landing'
 
 const App = () => {
 
@@ -48,6 +49,11 @@ const App = () => {
       <PublicRoute>
       <CreatePin/>
       </PublicRoute>}/>
+      <Route path="get-started" element={
+      <PublicRoute>
+      <Landing/>
+      </PublicRoute>}/>
+
       <Route path="history" element={
       <RequireAuth>
         <History/>
