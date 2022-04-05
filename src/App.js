@@ -31,117 +31,117 @@ const App = () => {
   // }, [])
   return (
     <BrowserRouter>
-    <Routes>
-    <Route path="/" element={
-    <RequireAuth>
-      <Home/> 
-    </RequireAuth>
-}/>
-      <Route path="login" element={
-      <PublicRoute>
-      <Login/>
-      </PublicRoute>}/>
-      <Route path="register" element={
-      <PublicRoute>
-      <SignUp/>
-      </PublicRoute>}/>
-      <Route path="register/create-pin" element={
-      <PublicRoute>
-      <CreatePin/>
-      </PublicRoute>}/>
-      <Route path="get-started" element={
-      <PublicRoute>
-      <Landing/>
-      </PublicRoute>}/>
+      <Routes>
+        <Route path="/" element={
+          <RequireAuth>
+            <Home />
+          </RequireAuth>
+        } />
+        <Route path="login" element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>} />
+        <Route path="register" element={
+          <PublicRoute>
+            <SignUp />
+          </PublicRoute>} />
+        <Route path="register/create-pin" element={
+          <PublicRoute>
+            <CreatePin />
+          </PublicRoute>} />
+        <Route path="get-started" element={
+          <PublicRoute>
+            <Landing />
+          </PublicRoute>} />
 
-      <Route path="history" element={
-      <RequireAuth>
-        <History/>
-      </RequireAuth>
-}/>
-      <Route path="transfer" element={
-      <RequireAuth>
-        <TransferBlank/>      
-      </RequireAuth>
-}/>
-      <Route path="transfer/:id" element={
-      <RequireAuth>
-        <Transfer2/>      
-      </RequireAuth>
-}/>
-      <Route path="transfer/confirmation" element={
-      <RequireAuth>
-        <TransferConfirm/>
-      </RequireAuth>
-}/>
+        <Route path="history" element={
+          <RequireAuth>
+            <History />
+          </RequireAuth>
+        } />
+        <Route path="transfer" element={
+          <RequireAuth>
+            <TransferBlank />
+          </RequireAuth>
+        } />
+        <Route path="transfer/:id" element={
+          <RequireAuth>
+            <Transfer2 />
+          </RequireAuth>
+        } />
+        <Route path="transfer/confirmation" element={
+          <RequireAuth>
+            <TransferConfirm />
+          </RequireAuth>
+        } />
 
-<Route path="profile" element={
-      <RequireAuth>
-        <Profile/>
-     </RequireAuth>
-}/>
+        <Route path="profile" element={
+          <RequireAuth>
+            <Profile />
+          </RequireAuth>
+        } />
 
-<Route path="profile/personal-info" element={
-      <RequireAuth>
-        <PersonalInfo/>
-      </RequireAuth>
-}/>
+        <Route path="profile/personal-info" element={
+          <RequireAuth>
+            <PersonalInfo />
+          </RequireAuth>
+        } />
 
-<Route path="profile/managePIN" element={
-      <RequireAuth>
-        <ChangePin/>
-      </RequireAuth>
-}/>
+        <Route path="profile/managePIN" element={
+          <RequireAuth>
+            <ChangePin />
+          </RequireAuth>
+        } />
 
-<Route path="profile/managePIN/set-new" element={
-      <RequireAuth>
-        <SetNewPin/>
-      </RequireAuth>
-}/>
+        <Route path="profile/managePIN/set-new" element={
+          <RequireAuth>
+            <SetNewPin />
+          </RequireAuth>
+        } />
 
-<Route path="profile/managephone" element={
-      <RequireAuth>
-        <ManagePhone/>
-      </RequireAuth>
-}/>
+        <Route path="profile/managephone" element={
+          <RequireAuth>
+            <ManagePhone />
+          </RequireAuth>
+        } />
 
-<Route path="profile/managephone/existing" element={
-      <RequireAuth>
-        <ManagePhonez/>
-      </RequireAuth>
-}/>
+        <Route path="profile/managephone/existing" element={
+          <RequireAuth>
+            <ManagePhonez />
+          </RequireAuth>
+        } />
 
-<Route path="admin" element={
-      <RequireAuth>
-        <Admin/>
-      </RequireAuth>
-}/>
+        <Route path="admin" element={
+          <RequireAuth>
+            <Admin />
+          </RequireAuth>
+        } />
 
-<Route path="admin/users" element={
-      <RequireAuth>
-        <User/>
-      </RequireAuth>
-}/>
+        <Route path="admin/users" element={
+          <RequireAuth>
+            <User />
+          </RequireAuth>
+        } />
 
-<Route path="admin/notification" element={
-      <RequireAuth>
-        <Notification/>
-      </RequireAuth>
-}/>
+        <Route path="admin/notification" element={
+          <RequireAuth>
+            <Notification />
+          </RequireAuth>
+        } />
 
-<Route path="topup" element={
-      <RequireAuth>
-        <Topup/>
-      </RequireAuth>
-}/>
+        <Route path="topup" element={
+          <RequireAuth>
+            <Topup />
+          </RequireAuth>
+        } />
 
-<Route path="profile/change-password" element={
-      <RequireAuth>
-        <ChangePW/>
-      </RequireAuth>
-}/>
+        <Route path="profile/change-password" element={
+          <RequireAuth>
+            <ChangePW />
+          </RequireAuth>
+        } />
 
-    </Routes>
+      </Routes>
     </BrowserRouter>
   )
 }

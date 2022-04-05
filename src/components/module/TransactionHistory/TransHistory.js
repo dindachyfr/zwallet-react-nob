@@ -5,7 +5,7 @@ import ReactPaginate from 'react-paginate'
 import './history.css'
 import { useNavigate } from 'react-router-dom'
 const TransHistory = () => {
-    const navigate= useNavigate()
+    const navigate = useNavigate()
     const [transactions, setTransactions] = useState([]);
     const user = JSON.parse(localStorage.getItem('user'))
     const [pageNumber, setPageNumber] = useState(0)
@@ -43,12 +43,12 @@ const TransHistory = () => {
 
     return (
         <Fragment>
-            <section class="trans-history w-lg-75 w-100 d-flex flex-column bg-white shadow-sm p-lg-3 flex-grow-3">
+            <section class="wrapper-balance-home flex-fill d-flex flex-column justify-content-between">
                 <div class="history-upper-h d-flex align-items-center px-lg-5 px-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" 
-                    class="bi bi-arrow-left d-block d-lg-none text-white" 
-                    viewBox="0 0 16 16"
-                    onClick={()=>navigate(-1)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-arrow-left d-block d-lg-none text-white"
+                        viewBox="0 0 16 16"
+                        onClick={() => navigate(-1)}>
                         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                     </svg>
                     <h3 class="text-secondary pt-lg-3 p-3 p-lg-0 title-history">Transaction History</h3>
