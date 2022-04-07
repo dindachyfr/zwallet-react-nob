@@ -22,7 +22,7 @@ const ContactWallet = () => {
 
     const displayUsers = usersData.data.slice(pagesVisited, pagesVisited + usersPerPage).map((user) => {
         return (
-            <div class='recipient pointer d-flex justify-content-between align-items-between shadow-sm'
+            <div class='recipient pointer my-3 d-flex justify-content-between align-items-between shadow-sm'
                 onClick={() => navigate(`/transfer/${user.id}`)}>
                 <div class="recipient d-flex p-3">
                     <img src={UserImage} alt='' />
@@ -51,7 +51,7 @@ const ContactWallet = () => {
     }
 
     return (
-        <section class="trans-history w-lg-75 w-100 d-flex flex-column bg-white shadow-sm p-lg-3 flex-grow-3">
+        <section class="trans-history w-75 d-flex flex-column bg-white shadow-sm p-lg-3 flex-grow-3">
             <div className="history-upper-h d-flex flex-column px-lg-5 px-3 py-lg-0 py-3">
                 <div className='d-flex align-items-center'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"

@@ -19,7 +19,7 @@ const Admin = () => {
     }
 
     return (
-        <section class="trans-history w-lg-75 w-100 bg-white shadow-sm p-lg-3">
+        <section class="trans-history w-75 bg-white shadow-sm p-lg-3">
             <img class='d-block d-lg-none' src='back-icon.svg' alt='' />
             <div className='user-wrapper d-flex justify-content-center'>
                 <img className="user-pic " src={profileData.data.profile_picture ? profileData.data.profile_picture : UserImage} alt="" />

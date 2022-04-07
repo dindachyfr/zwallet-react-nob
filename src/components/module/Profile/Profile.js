@@ -53,7 +53,7 @@ const ProfileMain = () => {
     }
 
     return (
-        <section class="trans-history w-lg-75 w-100 bg-white shadow-sm p-lg-3">
+        <section class="trans-history w-75 bg-white shadow-sm p-lg-3">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                 class="bi bi-arrow-left d-block d-lg-none text-secondary mt-5 m-3"
                 viewBox="0 0 16 16"

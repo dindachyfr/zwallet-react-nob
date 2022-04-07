@@ -36,7 +36,7 @@ const Topup = () => {
     }
 
     return (
-        <section className="trans-history h-100 w-lg-75 w-100 d-flex flex-column bg-white shadow-sm p-lg-3 flex-grow-3">
+        <section className="trans-history h-100 w-75 d-flex flex-column bg-white shadow-sm p-lg-3 flex-grow-3">
             <div className="history-upper-h2 d-flex flex-column px-lg-5 px-3 py-lg-0 py-3 w-100">
                 <div className="d-flex align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"

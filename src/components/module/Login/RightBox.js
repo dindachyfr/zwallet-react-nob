@@ -59,7 +59,7 @@ const RightBoxLogin = () => {
     // }
 
     const handleLogin = () => {
-        dispatch(login({form, navigate, setErrorMsg}))
+        dispatch(login({form, setErrorMsg}))
     }
 
     const moveToRegister = ()=>{

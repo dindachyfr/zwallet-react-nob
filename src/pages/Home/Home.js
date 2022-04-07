@@ -25,7 +25,7 @@ const Home = () => {
                 <main class="wrapper-content-home d-flex my-3 mx-lg-5 flex-fill">
                 <div class="container-content-home h-100 w-100 d-flex">
                     <SidebarMenu/>
-                    <section class="wrapper-balance-home flex-fill d-flex flex-column justify-content-between">
+                    <section class="wrapper-balance-home w-75 d-flex flex-column justify-content-between">
                         <WalletInfo/> 
                         <section class="wrapper-content-lower-home h-75 d-flex justify-content-between pt-3">
                             <TransactionInfo/>

@@ -16,7 +16,7 @@ const TransHistory = () => {
     }
     const displayHistories = transactions.slice(pagesVisited, pagesVisited + transPerPage).map((transaction) => {
         return (
-            <div class='recipient d-flex justify-content-between pe-lg-0 pe-3 align-items-center'>
+            <div class='recipient d-flex justify-content-between my-3 pe-lg-0 pe-3 align-items-center'>
                 <div class="recipient d-flex p-3 p-lg-0">
                     <img src={UserImage} alt='' />
                     <div className='text-secondary ms-3'>
@@ -43,7 +43,7 @@ const TransHistory = () => {
 
     return (
         <Fragment>
-            <section class="wrapper-balance-home flex-fill d-flex flex-column justify-content-between">
+            <section class="wrapper-balance-home bg-white w-75 flex-fill d-flex flex-column justify-content-between">
                 <div class="history-upper-h d-flex align-items-center px-lg-5 px-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                         class="bi bi-arrow-left d-block d-lg-none text-white"

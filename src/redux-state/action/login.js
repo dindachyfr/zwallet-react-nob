@@ -32,7 +32,7 @@ export const login = ({form, navigate, setErrorMsg}) => {
             localStorage.setItem('user', JSON.stringify(user))
             localStorage.setItem('token', token)
             localStorage.setItem('role', role)
-            navigate('/')
+            window.location.replace("/")
         } catch (error) {
             const message = error
             dispatch(loginErr(message))

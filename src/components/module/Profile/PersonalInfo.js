@@ -26,7 +26,7 @@ const PersonalInfo2 = () => {
     }
 
     return (
-        <section className="trans-history w-lg-75 w-100 bg-white shadow-sm p-lg-5 p-3">
+        <section className="trans-history w-75 bg-white shadow-sm p-lg-5 p-3">
             <div class="d-flex d-lg-none align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                     class="bi bi-arrow-left d-block d-lg-none text-secondary"

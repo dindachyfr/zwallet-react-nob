@@ -86,7 +86,7 @@ const TransferConfMain = () => {
 
 
     return (
-        <section class="trans-history h-100 w-lg-75 w-100 d-flex flex-column bg-white shadow-sm p-lg-3 flex-grow-3">               
+        <section class="trans-history h-100 w-75 d-flex flex-column bg-white shadow-sm p-lg-3 flex-grow-3">               
             <div className="history-upper-h2 d-flex flex-column px-lg-5 px-3 py-lg-0 py-3 w-100">
                 <div className="d-flex align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
@@ -103,9 +103,9 @@ const TransferConfMain = () => {
                         <img src={UserImage} alt='' />
                         <div className='text-secondary ms-3'>
                             {/* <h5>Cahyono</h5> */}
-                            <h5>{receiver.name}</h5>
+                            <h6>{receiver.name}</h6>
                             {/* <h5>082783826409</h5> */}
-                            <h5>{receiver.phone_number}</h5>
+                            <h6>{receiver.phone_number}</h6>
                         </div>
                     </div>
                 </div>
@@ -114,36 +114,36 @@ const TransferConfMain = () => {
         <div class="history-lower-h h-100 d-flex flex-column justify-content-between px-lg-5 px-3 pt-lg-1 pt-5">
                     <h4 class='text-secondary d-none d-lg-block pt-3'>Details</h4>
                     <div class="d-flex flex-lg-column flex-row justify-content-between w-100">
-                        <div class='recipient inner shadow-sm my-md-1 mx-lg-0 mx-1'>
+                        <div class='recipient inner shadow-sm my-3 my-md-1 mx-lg-0 mx-1'>
                             <div class="recipient p-2">
-                                <p class='text-secondary'>Amount</p>
-                                <h4 class='text-secondary'>IDR {receiptData.data.amount}</h4>
+                                <p class='text-secondary mb-2'>Amount</p>
+                                <h6 class='text-secondary'>IDR {receiptData.data.amount}</h6>
                              </div>
                         </div>
-                        <div class='recipient inner shadow-sm my-md-1 mx-lg-0 mx-1'>
+                        <div class='recipient inner shadow-sm my-3 my-md-1 mx-lg-0 mx-1'>
                             <div class="recipient p-2">
-                                <p class='text-secondary'>Balance</p>
-                                <h4 class='text-secondary'>{walletData.data.balance}</h4>
+                                <p class='text-secondary mb-2'>Balance</p>
+                                <h6 class='text-secondary'>{walletData.data.balance}</h6>
                              </div>
                         </div>
                         </div>
 
                         <div class="d-flex flex-lg-column flex-row justify-content-between w-100">
-                            <div class='recipient inner2 shadow-sm my-md-1 mx-lg-0 mx-1'>
+                        <div class='recipient inner shadow-sm my-3 my-md-1 mx-lg-0 mx-1'>
                                 <div class="recipient p-2">
-                                    <p class='text-secondary'>Date</p>
-                                    <h4 class='text-secondary'>{receiptData.data.date}</h4>
+                                    <p class='text-secondary mb-2'>Date</p>
+                                    <h6 class='text-secondary'>{receiptData.data.date}</h6>
                                 </div>
                             </div>
                     </div>
-                    <div class='recipient shadow-sm my-md-1'>
+                    <div class='recipient inner shadow-sm my-3 my-md-1 mx-lg-0 mx-1'>
                         <div class="recipient p-2">
-                            <p class='text-secondary'>Notes</p>
-                            <h4 class='text-secondary'>{receiptData.data.notes}</h4>
+                            <p class='text-secondary mb-2'>Notes</p>
+                            <h6 class='text-secondary'>{receiptData.data.notes}</h6>
                          </div>
                     </div>
                 </div>
-                <div class='continue d-flex justify-content-end py-1 mx-3 mx-0'>
+                <div class='continue d-flex justify-content-end py-1 m-3'>
                     <button 
                     class='continue-button button-h'
                     onClick={handleModalDisplay}
@@ -157,7 +157,7 @@ const TransferConfMain = () => {
               <h4>Enter PIN to Transfer</h4>
               <h3 class="close-modal" onClick={handleModalDisplayNot}>x</h3>
               </div>
-            <p class="text-secondary m-3 mb-5">Enter your 6 digits PIN to  confirm the transaction</p>
+            <p class="text-secondary m-3 ">Enter your 6 digits PIN to  confirm the transaction</p>
             <ReactCodeInput 
             fields={6} 
             initialValue=""
@@ -168,7 +168,7 @@ const TransferConfMain = () => {
             inputMode="number"
             {...props}
             />
-            <div class="button-wrapper w-100 d-flex justify-content-end mt-5">
+            <div class="button-wrapper w-100 d-flex justify-content-end">
             {errorMsg && <h6 className="text-danger w-100">{errorMsg}</h6>}
               <button 
               class='continue-button mt-5'

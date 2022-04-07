@@ -4,7 +4,7 @@ const LogoutModal= ({handleModal, handleLogout}) => {
     // console.log(UID, "adalah UID");
   return (
     <main class="con container-fluid d-flex flex-column p-0 justify-content-between">
-    <div class="modal-pin bg-light w-25 p-3 m-3 d-flex flex-column">
+    <div class="modal-pin bg-light w-25 p-3 m-3 d-flex flex-column d-flex flex-column justify-content-between">
         <div class="top-modal d-flex justify-content-between m-3">
           <h4>Are you sure want to logout?</h4>
           <h3 

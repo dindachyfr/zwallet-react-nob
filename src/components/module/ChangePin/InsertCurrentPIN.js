@@ -56,7 +56,7 @@ const InsertCurrentPIN = () => {
   }
 
   return (
-    <section class="trans-history w-lg-75 w-100 bg-white shadow-sm p-3 p-lg-5">
+    <section class="trans-history w-75 bg-white shadow-sm p-3 p-lg-5">
       <div class="d-flex d-lg-none align-items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
           class="bi bi-arrow-left d-block d-lg-none text-secondary"
@@ -69,7 +69,7 @@ const InsertCurrentPIN = () => {
       <h3 className='my-3 d-lg-block d-none'>Change PIN</h3>
       <p className='my-5 w-50'>Enter your current 6 digits PIN below to continue to the next step</p>
 
-      <section className='w-100 h-50 d-flex justify-content-center'>
+      <section className='w-100 d-flex justify-content-center'>
         <ReactCodeInput
           fields={6}
           initialValue=""
@@ -83,7 +83,7 @@ const InsertCurrentPIN = () => {
 
       </section>
 
-      <section className='w-100 d-flex justify-content-center'>
+      <section className='w-100 mt-5 mb-3 d-flex justify-content-center'>
         <Button
           className="btn btn-login pointer w-50 p-3"
           disabled={!pinValue || pinValue.length < 6}

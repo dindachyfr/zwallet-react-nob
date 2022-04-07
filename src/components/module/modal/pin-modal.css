@@ -10,8 +10,9 @@
 .modal-pin{
     position: fixed;
     border-radius: 2rem;
-    top: 25vh;
+    top: 10vh;
     left: 37.5vw;
+    min-height: 50vh;
 }
 
 .modal-pin-2 {

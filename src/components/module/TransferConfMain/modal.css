@@ -10,8 +10,9 @@
 .modal-pin, .modal-pin-2{
     position: fixed;
     border-radius: 2rem;
-    top: 25vh;
+    top: 15vh;
     left: 37.5vw;
+    height: 30vh!important;
 }
 
 .continue-button {
