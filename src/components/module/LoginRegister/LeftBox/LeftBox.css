@@ -5,13 +5,17 @@
 
 .box-left{
     background-color:  #6379F4;
-    padding:55px;
+    padding:2rem 3rem;
 }
 
 .box{
-    height: 100vh;
+    height: 100vh!important;
 }
 
 img.phone-pic-home{
     height: 50vh;
+}
+
+.banner-phone-wrapper, .banner-phone-auth{
+    width: 26vw;
 }

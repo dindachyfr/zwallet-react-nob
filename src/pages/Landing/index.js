@@ -56,7 +56,7 @@ const Landing = () => {
                 </main>
             </section>
             <section className={`p-lg-5 p-3 py-5 landing-2 ${styles.con2}`}>
-                <div className="wrapper px-3 w-100 d-flex flex-wrap d-flex justify-content-between">
+                <div className="wrapper px-3 w-100 d-lg-flex d-none flex-wrap d-flex justify-content-between">
                     <img src={MS} alt="" />
                     <img src={Dropbox} alt="" />
                     <img src={Hnm} alt="" />
@@ -64,6 +64,19 @@ const Landing = () => {
                     <img src={Canon} alt="" />
                     <img src={Dell} alt="" />
                 </div>
+                <div className="wrapper w-100 d-flex h-100 d-lg-none d-flex justify-content-between">
+                    <div className="d-flex flex-column h-100 justify-content-betweeen align-items-center">
+                        <img src={MS} alt="" />
+                        <img src={Canon} alt="" />
+                        <img src={Hnm} alt="" />
+                    </div>
+                    <div className="d-flex flex-column justify-content-betweeen align-items-center">
+                        <img src={Dropbox} alt="" />
+                        <img src={Airbnb} alt="" />
+                        <img src={Dell} alt="" />
+                    </div>
+                </div>
+
             </section>
             <section className={`p-lg-5 p-3 py-5 landing-3 bg-light`}>
                 <h1 className={`${styles.textBlue} fw-bold text-center`}>

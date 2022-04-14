@@ -61,6 +61,11 @@
     .conFooter{
         height: 10vh;
     }
+
+    .con2{
+        min-height: 10rem;
+    }
+    
     
 }
 @media screen and (min-width: 969px) and (max-width: 1050px) {

@@ -70,38 +70,40 @@ const RightBox = () => {
     }
 
     return (
-        <section className="box box-right p-5">
-            <main className="box-right-wrapper d-flex flex-column justify-content-between mx-auto">
-                <h2 className="text-center w-100 text-secondary d-block d-lg-none">Sign Up</h2>
-                <h2 className="text-secondary w-100 d-none d-lg-block">Secure Your Account, Your Wallet, and Your Data
-                    with 6 Digits PIN You Created Yourself</h2>
-                <p className="text-secondary w-100 text-center d-block d-lg-none">Create your own PIN.</p>
-                <p className="text-secondary w-100 d-none d-lg-block">Create 6 digits pin to secure all your money and you data in
-                    Zwallet app. Keep it secret and don't tell anyone about your ZWallet password and PIN</p>
+        <>
+            <div className="d-block d-lg-none p-5 bg-light">
+                <h3 className="text-blue text-center">Zwallet</h3>
+            </div>
+            <section className="box box-right p-lg-5 p-3">
+                <main className="box-right-wrapper d-flex flex-column justify-content-between mx-auto">
+                    <h2 className="text-center w-100 text-secondary d-block d-lg-none">Sign Up</h2>
+                    <h2 className="text-secondary w-100 d-none d-lg-block">Secure Your Account, Your Wallet, and Your Data
+                        with 6 Digits PIN You Created Yourself</h2>
+                    <p className="text-secondary w-100 text-center d-block d-lg-none">Create your own PIN.</p>
+                    <p className="text-secondary w-100 d-none d-lg-block">Create 6 digits pin to secure all your money and you data in
+                        Zwallet app. Keep it secret and don't tell anyone about your ZWallet password and PIN</p>
 
-                <ReactCodeInput
-                    fields={6}
-                    initialValue=""
-                    value={pinValue}
-                    // secret 
-                    onChange={handlePinChange}
-                    type="number"
-                    inputMode="number"
-                    {...props}
-                />
+                    <ReactCodeInput
+                        fields={6}
+                        initialValue=""
+                        value={pinValue}
+                        // secret 
+                        onChange={handlePinChange}
+                        type="number"
+                        inputMode="number"
+                        {...props}
+                    />
 
-                <Button
-                    isLoading={putPINData.loading}
-                    disabled={!pinValue || (pinValue.length < 6)}
-                    onClick={handleSetPin}
-                    className="btn btn-login pointer"
-                >
-                    Login</Button>
-
-
-
-            </main>
-        </section>
+                    <Button
+                        isLoading={putPINData.loading}
+                        disabled={!pinValue || (pinValue.length < 6)}
+                        onClick={handleSetPin}
+                        className="btn btn-login pointer"
+                    >
+                        Login</Button>
+                </main>
+            </section>
+        </>
     )
 }
 

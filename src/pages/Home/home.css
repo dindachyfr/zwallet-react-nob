@@ -102,6 +102,10 @@ input.form-control {
     color: white;
 }
 
+.text-blue{
+    color:#6379F4;
+}
+
 @media screen and (min-width: 240px) and (max-width: 968px) {
     .balance-box-home {
         height: 10rem !important;
@@ -130,7 +134,12 @@ input.form-control {
     .recipient {
         background-color: #ffffff !important;
     }
-
+    
+    .box{
+        min-height: 60vh;
+        border-top-right-radius: 1.5rem!important;
+        border-top-left-radius: 1.5rem!important;
+    }
     /* .balance-right-home{
      align-items: center;
  } */

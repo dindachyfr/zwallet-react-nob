@@ -31,8 +31,8 @@ export const register = ({form, navigate, setErrorMsg}) => {
             navigate('/register/create-pin')
         } catch (error) {
             const message = error
-            dispatch(registerErr(message))
-            setErrorMsg("Email already exists!")
+            dispatch(registerErr(message.response.data.message))
+            setErrorMsg(message.response.data.message)
         }
     }
 }

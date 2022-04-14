@@ -30,7 +30,7 @@ const TransHistory = () => {
     })
     useEffect(() => {
         // axios.get(`https://zwallet-dinda.herokuapp.com/transaction/history/${user.wallet_id}?limit=4`)
-        axios.get(`${process.env.REACT_APP_URL_BACKEND}/transaction/history/${user.wallet_id}?limit=10`)
+        axios.get(`${process.env.REACT_APP_URL_BACKEND}/transaction/history/${user.wallet_id}?limit=12`)
             .then((res) => {
                 const result = res.data.data
                 setTransactions(result)
